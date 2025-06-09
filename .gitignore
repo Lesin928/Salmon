@@ -50,7 +50,7 @@ Assets/**/SceneLightingSettings.asset
 Assets/AddressableAssetsData/*/AssetBundles/
 
 # Lightmaps / GI 데이터
-Assets/**/Lightmap-*.*
+Assets/**/Lightmap-*.* 
 Assets/**/GlobalIllumination.asset
 Assets/**/LightingData.asset
 
@@ -93,9 +93,14 @@ PlasticSCM/
 # 환경 설정
 .env
 
+# ============ 대용량 에셋 Git 추적 제외 ============
+
+# 기존 LFS 추적 대상 폴더 무시
+Salmon/Assets/AssetPackages/
+
 # ============ 제외 규칙 (Git 추적 유지) ============
+
 !Assets/
 !ProjectSettings/
 !Packages/
 !UserSettings/           # 유니티 에디터 사용자 설정 유지할 경우 필요
-
