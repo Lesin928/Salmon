@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using Singleton.Component;
 
 /// <summary>
 /// Controls interactions with the Achievement System
 /// </summary>
 [System.Serializable]
-public class AchievementManager : MonoBehaviour
+public class AchievementManager : SingletonComponent<AchievementManager>
 {
     [Tooltip("The number of seconds an achievement will stay on the screen after being unlocked or progress is made.")]
     public float DisplayTime = 3;
@@ -38,24 +39,33 @@ public class AchievementManager : MonoBehaviour
     [Tooltip("The key of the final achievement")]
     public string FinalAchievementKey;
 
-    public static AchievementManager Instance = null; //Singleton Instance
     public AchievementStack Stack;
 
-    private void Awake()
+    #region Singleton
+    protected override void AwakeInstance()
     {
-       if (Instance == null)
-       {
-            Instance = this;
-       }
-       else if (Instance != this)
-       {
-            Destroy(gameObject);
-       }
-        DontDestroyOnLoad(gameObject);
+        Initialize();
+    }
+
+    protected override bool InitInstance()
+    {
         AudioSource = gameObject.GetComponent<AudioSource>();
         Stack = GetComponentInChildren<AchievementStack>();
         LoadAchievementState();
+        return true;
     }
+
+    protected override void ReleaseInstance()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        if (Instance != this)
+            Destroy(gameObject);
+    }
+    #endregion
 
     private void PlaySound (AudioClip Sound)
     {
