@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 //UI 데이터를 담는 클래스
-public class BaseUIData
+public class UIBaseData
 {
     public Action OnShow;  //UI가 표시될 때 실행할 콜백
     public Action OnClose; //UI가 닫힐 때 실행할 콜백
@@ -37,7 +37,7 @@ public class UIBase : MonoBehaviour
     }
 
     // UI 정보 설정 메서드
-    public virtual void SetInfo(BaseUIData uiData)
+    public virtual void SetInfo(UIBaseData uiData)
     {
 
         m_OnShow = uiData.OnShow;      // 표시 콜백 설정
@@ -66,7 +66,7 @@ public class UIBase : MonoBehaviour
         }
         m_OnClose = null;    // 닫기 콜백 초기화
 
-        //UIManager.Instance.CloseUI(this);    // UI 매니저를 통해 UI 닫기
+        UIManager.Instance.CloseUI(this);    // UI 매니저를 통해 UI 닫기
     }
 
     // 닫기 버튼 클릭 시 실행되는 메서드
