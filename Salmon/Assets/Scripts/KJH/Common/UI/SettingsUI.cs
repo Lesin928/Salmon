@@ -9,13 +9,13 @@ public class SettingsUI : UIBase
     [SerializeField] private Toggle FullScreenToggle;
 
     private Resolution[] AllResolutions;
-    private bool m_IsFullScreen;
-    private int m_SelectedResolution;
     private List<Resolution> SelectedResolutionList = new List<Resolution>();
+
+    [SerializeField] private Slider MusicSlider;
+    [SerializeField] private Slider SFXSlider;
 
     private void Start()
     {
-        m_IsFullScreen = true;
         AllResolutions = Screen.resolutions;
 
         List<string> resolutionStringList = new List<string>();
@@ -33,17 +33,68 @@ public class SettingsUI : UIBase
         ResDropDown.AddOptions(resolutionStringList);
     }
 
+    public override void SetInfo(UIBaseData uiData)
+    {
+        base.SetInfo(uiData);
+
+        var userSettingsData = UserDataManager.Instance.GetUserData<UserSettingsData>();
+        if(userSettingsData != null)
+        {
+            var selectedResolution = userSettingsData.ResolutionIndex;
+            ResDropDown.value = selectedResolution;
+            FullScreenToggle.isOn = userSettingsData.FullScreen;
+            Screen.SetResolution(SelectedResolutionList[selectedResolution].width,
+                                SelectedResolutionList[selectedResolution].height,
+                                userSettingsData.FullScreen);
+            MusicSlider.value = userSettingsData.Music_Volume;
+            SFXSlider.value = userSettingsData.SFX_Volume;
+        }
+    }
+
     public void SetResolution()
     {
-        m_SelectedResolution = ResDropDown.value;
-        Screen.SetResolution(SelectedResolutionList[m_SelectedResolution].width,
-                            SelectedResolutionList[m_SelectedResolution].height,
-                            m_IsFullScreen);
+        var userSettingsData = UserDataManager.Instance.GetUserData<UserSettingsData>();
+        if (userSettingsData != null)
+        {
+            userSettingsData.ResolutionIndex = ResDropDown.value;
+            userSettingsData.SaveData();
+            var selectedResolution = userSettingsData.ResolutionIndex;
+            Screen.SetResolution(SelectedResolutionList[selectedResolution].width,
+                                SelectedResolutionList[selectedResolution].height,
+                                userSettingsData.FullScreen);
+        }
     }
 
     public void ChangeFullScreen()
     {
-        m_IsFullScreen = FullScreenToggle.isOn;
-        Screen.fullScreen = m_IsFullScreen;
+        var userSettingsData = UserDataManager.Instance.GetUserData<UserSettingsData>();
+        if (userSettingsData != null)
+        {
+            userSettingsData.FullScreen = FullScreenToggle.isOn;
+            userSettingsData.SaveData();
+            Screen.fullScreen = userSettingsData.FullScreen;
+        }
+    }
+
+    public void SetMusicVolume()
+    {
+        var userSettingsData = UserDataManager.Instance.GetUserData<UserSettingsData>();
+        if (userSettingsData != null)
+        {
+            userSettingsData.Music_Volume = MusicSlider.value;
+            userSettingsData.SaveData();
+            AudioManager.Instance.SetVolume(userSettingsData);
+        }
+    }
+
+    public void SetSFXVolume()
+    {
+        var userSettingsData = UserDataManager.Instance.GetUserData<UserSettingsData>();
+        if (userSettingsData != null)
+        {
+            userSettingsData.SFX_Volume = SFXSlider.value;
+            userSettingsData.SaveData();
+            AudioManager.Instance.SetVolume(userSettingsData);
+        }
     }
 }
