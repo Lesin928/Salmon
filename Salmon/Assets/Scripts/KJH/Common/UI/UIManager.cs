@@ -57,7 +57,7 @@ public class UIManager : SingletonComponent<UIManager>
         }
         else
         {
-            var uiObj = Instantiate(Resources.Load($"UI/{uiType}", typeof(GameObject))) as GameObject;
+            var uiObj = Instantiate(Resources.Load($"KJH_Resources/UI/{uiType}", typeof(GameObject))) as GameObject; // 나중에 리소스를 통합하면 KJH_Resources는 지울 것
             ui = uiObj.GetComponent<UIBase>();
         }
 

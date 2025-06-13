@@ -1,15 +1,21 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class LobbyUIController : MonoBehaviour
 {
-    void Start()
+    public void Init()
     {
         
     }
 
-    void Update()
+    public void OnClickNewGameBtn()
     {
+        //AudioManager.Instance.PlaySFX(SFX.ui_button_click);
+        //AudioManager.Instance.StopBGM();
+    }
 
+    public void OnClickSettingsBtn()
+    {
+        var uiData = new UIBaseData();
+        UIManager.Instance.OpenUI<SettingsUI>(uiData);
     }
 }

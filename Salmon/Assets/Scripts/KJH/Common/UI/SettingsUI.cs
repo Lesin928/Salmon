@@ -14,8 +14,10 @@ public class SettingsUI : UIBase
     [SerializeField] private Slider MusicSlider;
     [SerializeField] private Slider SFXSlider;
 
-    private void Start()
+    public override void SetInfo(UIBaseData uiData)
     {
+        base.SetInfo(uiData);
+
         AllResolutions = Screen.resolutions;
 
         List<string> resolutionStringList = new List<string>();
@@ -31,11 +33,6 @@ public class SettingsUI : UIBase
         }
 
         ResDropDown.AddOptions(resolutionStringList);
-    }
-
-    public override void SetInfo(UIBaseData uiData)
-    {
-        base.SetInfo(uiData);
 
         var userSettingsData = UserDataManager.Instance.GetUserData<UserSettingsData>();
         if(userSettingsData != null)
