@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UIManager : SingletonComponent<UIManager>
 {
-    public Transform UICanvasTrs;
+    public Transform m_OpenedUITrs;
     public Transform m_ClosedUITrs;
     public Image m_Fade;
     private UIBase m_FrontUI;
@@ -85,9 +85,7 @@ public class UIManager : SingletonComponent<UIManager>
             return;
         }
 
-        var siblingIdx = UICanvasTrs.childCount - 2;
-        ui.Init(UICanvasTrs);
-        ui.transform.SetSiblingIndex(siblingIdx);
+        ui.Init(m_OpenedUITrs);
         ui.gameObject.SetActive(true);
         ui.SetInfo(uiData);
         ui.ShowUI();
@@ -108,10 +106,13 @@ public class UIManager : SingletonComponent<UIManager>
         ui.transform.SetParent(m_ClosedUITrs);
 
         m_FrontUI = null;
-        var lastChild = UICanvasTrs.GetChild(UICanvasTrs.childCount - 3);
-        if (lastChild)
+        if(m_OpenedUITrs.childCount > 0)
         {
-            m_FrontUI = lastChild.gameObject.GetComponent<UIBase>();
+            var lastChild = m_OpenedUITrs.GetChild(m_OpenedUITrs.childCount);
+            if (lastChild)
+            {
+                m_FrontUI = lastChild.gameObject.GetComponent<UIBase>();
+            }
         }
     }
 
