@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class LobbyUIController : MonoBehaviour
 {
+    [SerializeField] private GameObject m_ContinueBtn;
+
     public void Init()
     {
         
@@ -17,5 +19,10 @@ public class LobbyUIController : MonoBehaviour
     {
         var uiData = new UIBaseData();
         UIManager.Instance.OpenUI<SettingsUI>(uiData);
+    }
+
+    public void OnClickQuitBtn()
+    {
+        GameManager.Instance.Quit();
     }
 }

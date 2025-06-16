@@ -45,5 +45,8 @@ public class GameManager : SingletonComponent<GameManager>
     }
     #endregion
 
-
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
