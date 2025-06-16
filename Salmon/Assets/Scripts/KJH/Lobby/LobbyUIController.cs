@@ -4,9 +4,17 @@ public class LobbyUIController : MonoBehaviour
 {
     [SerializeField] private GameObject m_ContinueBtn;
 
-    public void Init()
+    private void Start()
     {
-        
+        var userPlayData = UserDataManager.Instance.GetUserData<UserPlayData>();
+        if (userPlayData != null && userPlayData.ExistsSavedPlayData)
+        {
+            m_ContinueBtn.SetActive(true);
+        }
+        else
+        {
+            m_ContinueBtn.SetActive(false);
+        }
     }
 
     public void OnClickNewGameBtn()
