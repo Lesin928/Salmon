@@ -5,7 +5,7 @@ using UnityEngine;
 // NOTE : (기타 작성)
 
 /// <summary>
-/// 이동 상태를 나타내는 클래스
+/// 연어의 이동 상태를 처리하는 클래스
 /// </summary>
 public class SalmonMoveState : SalmonState
 {

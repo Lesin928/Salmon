@@ -5,7 +5,7 @@ using UnityEngine;
 // NOTE : (기타 작성)
 
 /// <summary>
-/// 플레이어 애니메이션을 관리하는 클래스
+/// 연어의 애니메이션을 관리하는 클래스
 /// </summary>
 public class SalmonAnimation : MonoBehaviour
 {

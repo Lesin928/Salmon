@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// 연어의 이동 방향과 속도를 시각적으로 표시하는 Gizmos 클래스
+/// </summary>
 public class SalmonGizmos : MonoBehaviour
 { 
     private Rigidbody rb;
