@@ -17,8 +17,14 @@ public class LobbyUIController : MonoBehaviour
         }
     }
 
+    public void OnClickContinueBtn()
+    {
+        // 저장된 게임을 로드
+    }
+
     public void OnClickNewGameBtn()
     {
+        // 새로운 게임 시작
         //AudioManager.Instance.PlaySFX(SFX.ui_button_click);
         //AudioManager.Instance.StopBGM();
     }
@@ -27,6 +33,16 @@ public class LobbyUIController : MonoBehaviour
     {
         var uiData = new UIBaseData();
         UIManager.Instance.OpenUI<SettingsUI>(uiData);
+    }
+
+    public void OnClickAchievementsBtn()
+    {
+        // 도전과제 목록 보여주기
+    }
+
+    public void OnClickCreditsBtn()
+    {
+        // 크레딧 화면 열기
     }
 
     public void OnClickQuitBtn()
