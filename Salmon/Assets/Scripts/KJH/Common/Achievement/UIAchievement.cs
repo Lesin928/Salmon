@@ -13,12 +13,12 @@ public class UIAchievement : MonoBehaviour
     public Image Icon, OverlayIcon, ProgressBar;
     public GameObject SpoilerOverlay;
     public TextMeshProUGUI SpoilerText;
-    [HideInInspector]public AchievementStack AS;
+    [HideInInspector] public AchievementStack AS;
 
     /// <summary>
     /// Destroy object after a certain amount of time
     /// </summary>
-    public void StartDeathTimer ()
+    public void StartDeathTimer()
     {
         StartCoroutine(Wait());
     }
@@ -26,9 +26,9 @@ public class UIAchievement : MonoBehaviour
     /// <summary>
     /// Add information  about an Achievement to the UI elements
     /// </summary>
-    public void Set (AchievementInfromation Information, AchievementState State)
+    public void Set(AchievementInfromation Information, AchievementState State)
     {
-        if(Information.Spoiler && !State.Achieved)
+        if (Information.Spoiler && !State.Achieved)
         {
             SpoilerOverlay.SetActive(true);
             SpoilerText.text = AchievementManager.Instance.SpoilerAchievementMessage;
@@ -60,7 +60,7 @@ public class UIAchievement : MonoBehaviour
                 }
                 else
                 {
-                    Percent.text = DisplayProgress + Information.ProgressSuffix +  " / " + Information.ProgressGoal + Information.ProgressSuffix;
+                    Percent.text = DisplayProgress + Information.ProgressSuffix + " / " + Information.ProgressGoal + Information.ProgressSuffix;
                 }
 
                 ProgressBar.fillAmount = DisplayProgress / Information.ProgressGoal;
@@ -73,7 +73,7 @@ public class UIAchievement : MonoBehaviour
         }
     }
 
-    private IEnumerator Wait ()
+    private IEnumerator Wait()
     {
         yield return new WaitForSeconds(AchievementManager.Instance.DisplayTime);
         GetComponent<Animator>().SetTrigger("ScaleDown");

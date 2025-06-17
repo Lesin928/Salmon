@@ -10,7 +10,7 @@ public class AchievementListIngame : MonoBehaviour
     [SerializeField] private GameObject scrollContent;
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject Menu;
-    [SerializeField] private Dropdown Filter;
+    [SerializeField] private TMP_Dropdown Filter;
     [SerializeField] private TextMeshProUGUI CountText;
     [SerializeField] private TextMeshProUGUI CompleteText;
     [SerializeField] private Scrollbar Scrollbar;
@@ -24,7 +24,7 @@ public class AchievementListIngame : MonoBehaviour
     /// </summary>
     /// <param name="Filter">Filter to use (All, Achieved or Unachieved)</param>
     private void AddAchievements(string Filter)
-    {  
+    {
         foreach (Transform child in scrollContent.transform)
         {
             Destroy(child.gameObject);
@@ -35,9 +35,9 @@ public class AchievementListIngame : MonoBehaviour
         CountText.text = "" + AchievedCount + " / " + AM.States.Count;
         CompleteText.text = "Complete (" + AM.GetAchievedPercentage() + "%)";
 
-        for (int i = 0; i < AM.AchievementList.Count; i ++)
+        for (int i = 0; i < AM.AchievementList.Count; i++)
         {
-            if((Filter.Equals("All")) || (Filter.Equals("Achieved") && AM.States[i].Achieved) || (Filter.Equals("Unachieved") && !AM.States[i].Achieved))
+            if ((Filter.Equals("All")) || (Filter.Equals("Achieved") && AM.States[i].Achieved) || (Filter.Equals("Unachieved") && !AM.States[i].Achieved))
             {
                 AddAchievementToUI(AM.AchievementList[i], AM.States[i]);
             }
@@ -54,7 +54,7 @@ public class AchievementListIngame : MonoBehaviour
     /// <summary>
     /// Filter out a set of locked or unlocked achievements
     /// </summary>
-    public void ChangeFilter ()
+    public void ChangeFilter()
     {
         AddAchievements(Filter.options[Filter.value].text);
     }
@@ -81,17 +81,19 @@ public class AchievementListIngame : MonoBehaviour
     /// </summary>
     public void ToggleWindow()
     {
-        if (MenuOpen){
+        if (MenuOpen)
+        {
             CloseWindow();
         }
-        else{
+        else
+        {
             OpenWindow();
         }
     }
- 
+
     private void Update()
     {
-        if(Input.GetKeyDown(OpenMenuKey))
+        if (Input.GetKeyDown(OpenMenuKey))
         {
             ToggleWindow();
         }

@@ -28,9 +28,9 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     public AudioClip AchievedSound;
     [Tooltip("The sound which plays when a progress update is displayed to a user. Sounds are only played when Display Achievements is true.")]
     public AudioClip ProgressMadeSound;
-    
+
     private AudioSource AudioSource;
-   
+
     public List<AchievementState> States = new List<AchievementState>();                       //List of achievement states (achieved, progress and last notification)
     public List<AchievementInfromation> AchievementList = new List<AchievementInfromation>();  //List of all available achievements
 
@@ -67,9 +67,9 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     }
     #endregion
 
-    private void PlaySound (AudioClip Sound)
+    private void PlaySound(AudioClip Sound)
     {
-        if(AudioSource != null)
+        if (AudioSource != null)
         {
             AudioSource.clip = Sound;
             AudioSource.Play();
@@ -100,8 +100,8 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     public int GetAchievedCount()
     {
         int Count = (from AchievementState i in States
-                    where i.Achieved == true
-                    select i).Count();
+                     where i.Achieved == true
+                     select i).Count();
         return Count;
     }
     /// <summary>
@@ -109,7 +109,7 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     /// </summary>
     public float GetAchievedPercentage()
     {
-        if(States.Count == 0)
+        if (States.Count == 0)
         {
             return 0;
         }
@@ -139,7 +139,7 @@ public class AchievementManager : SingletonComponent<AchievementManager>
             DisplayUnlock(Index);
             AutoSaveStates();
 
-            if(UseFinalAchievement)
+            if (UseFinalAchievement)
             {
                 int Find = States.FindIndex(x => !x.Achieved);
                 bool CompletedAll = (Find == -1 || AchievementList[Find].Key.Equals(FinalAchievementKey));
@@ -166,7 +166,7 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     /// <param name="Progress">Set progress to this value</param>
     public void SetAchievementProgress(int Index, float Progress)
     {
-        if(AchievementList[Index].Progression)
+        if (AchievementList[Index].Progression)
         {
             if (States[Index].Progress >= AchievementList[Index].ProgressGoal)
             {
@@ -176,7 +176,7 @@ public class AchievementManager : SingletonComponent<AchievementManager>
             {
                 States[Index].Progress = Progress;
                 DisplayUnlock(Index);
-                AutoSaveStates();                
+                AutoSaveStates();
             }
         }
     }
@@ -241,7 +241,7 @@ public class AchievementManager : SingletonComponent<AchievementManager>
                 States.Add(NewState);
             }
             else { States.Add(new AchievementState()); }
-            
+
         }
     }
     /// <summary>
@@ -293,14 +293,14 @@ public class AchievementManager : SingletonComponent<AchievementManager>
                 //Loop through all notification point backwards from last possible option
                 for (int i = Steps; i > States[Index].LastProgressUpdate; i--)
                 {
-                   //When it finds the largest valid notification point
-                   if (States[Index].Progress >= AchievementList[Index].NotificationFrequency * i)
-                   {
+                    //When it finds the largest valid notification point
+                    if (States[Index].Progress >= AchievementList[Index].NotificationFrequency * i)
+                    {
                         PlaySound(ProgressMadeSound);
                         States[Index].LastProgressUpdate = i;
                         Stack.ScheduleAchievementDisplay(Index);
                         return;
-                   }
+                    }
                 }
             }
             else
