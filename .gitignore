@@ -12,6 +12,7 @@
 [Bb]uild/
 [Bb]uilds/
 MemoryCaptures/
+UserSettings/
 *.stacktrace
 
 # Unity 프로젝트 파일 무시
@@ -24,6 +25,7 @@ MemoryCaptures/
 *.pidb
 *.booproj
 *.svd
+
 
 # 디버그 및 로그
 *.log
@@ -103,4 +105,4 @@ Salmon/Assets/AssetPackages/
 !Assets/
 !ProjectSettings/
 !Packages/
-!UserSettings/           # 유니티 에디터 사용자 설정 유지할 경우 필요
+
