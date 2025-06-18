@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1953259897 &8574412962073106934
+TerrainLayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pebbles_B
+  m_DiffuseTexture: {fileID: 2800000, guid: 39561edfc8504ab4484b3727f4705169, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 11da7ed1e2ff306498a60c279a9fe714, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 9e31e23b82b5b06439170498322552ff, type: 3}
+  m_TileSize: {x: 20, y: 20}
+  m_TileOffset: {x: 0, y: 0}
+  m_Specular: {r: 0, g: 0, b: 0, a: 0}
+  m_Metallic: 0
+  m_Smoothness: 0
+  m_NormalScale: 1.5
+  m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
+  m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
+  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 0.3}
+  m_SmoothnessSource: 1
