@@ -17,36 +17,45 @@ public class LobbyUIController : MonoBehaviour
         }
     }
 
-    public void OnClickContinueBtn()
+    public void OnClickContinueButton()
     {
         // 저장된 게임을 로드
     }
 
-    public void OnClickNewGameBtn()
+    public void OnClickNewGameButton()
     {
         // 새로운 게임 시작
         //AudioManager.Instance.PlaySFX(SFX.ui_button_click);
         //AudioManager.Instance.StopBGM();
     }
 
-    public void OnClickSettingsBtn()
+    public void OnClickSettingsButton()
     {
         var uiData = new UIBaseData();
         UIManager.Instance.OpenUI<SettingsUI>(uiData);
     }
 
-    public void OnClickAchievementsBtn()
+    public void OnClickAchievementsButton()
     {
         // 도전과제 목록 보여주기
     }
 
-    public void OnClickCreditsBtn()
+    public void OnClickCreditsButton()
     {
         // 크레딧 화면 열기
     }
 
-    public void OnClickQuitBtn()
+    public void OnClickQuitButton()
     {
         GameManager.Instance.Quit();
+    }
+
+    // 테스트용
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.Instance.Pause();
+        }
     }
 }

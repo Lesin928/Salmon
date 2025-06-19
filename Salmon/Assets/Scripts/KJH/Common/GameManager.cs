@@ -11,13 +11,11 @@ public class GameManager : SingletonComponent<GameManager>
 
     protected override bool InitInstance()
     {
-        // 유저 데이터 로드 주석
-        //유저 데이터 로드
+        // 유저 데이터 로드
         // 유저 데이터 매니저를 통한 데이터 로드
         UserDataManager.Instance.LoadUserData();
 
-        // 저장된 유저 데이터가 없으면 기본데이터 생성 후 저장 주석
-        //저장된 유저 데이터가 없으면 기본데이터 생성 후 저장
+        // 저장된 유저 데이터가 없으면 기본데이터 생성 후 저장
         // 저장된 데이터가 존재하지 않는 경우
         if (!UserDataManager.Instance.ExistsSavedData)
         {
@@ -48,5 +46,11 @@ public class GameManager : SingletonComponent<GameManager>
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Pause()
+    {
+        var uiData = new UIBaseData();
+        UIManager.Instance.OpenUI<PauseUI>(uiData);
     }
 }

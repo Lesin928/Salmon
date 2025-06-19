@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class UIManager : SingletonComponent<UIManager>
 {
-    public Transform m_OpenedUITrs;
-    public Transform m_ClosedUITrs;
-    public Image m_Fade;
+    [SerializeField] private Transform m_OpenedUITrs;
+    [SerializeField] private Transform m_ClosedUITrs;
+    [SerializeField] private Image m_Fade;
     private UIBase m_FrontUI;
     private Dictionary<System.Type, GameObject> m_OpenUIPool = new Dictionary<System.Type, GameObject>();
     private Dictionary<System.Type, GameObject> m_ClosedUIPool = new Dictionary<System.Type, GameObject>();
@@ -108,7 +108,7 @@ public class UIManager : SingletonComponent<UIManager>
         m_FrontUI = null;
         if(m_OpenedUITrs.childCount > 0)
         {
-            var lastChild = m_OpenedUITrs.GetChild(m_OpenedUITrs.childCount);
+            var lastChild = m_OpenedUITrs.GetChild(m_OpenedUITrs.childCount - 1);
             if (lastChild)
             {
                 m_FrontUI = lastChild.gameObject.GetComponent<UIBase>();

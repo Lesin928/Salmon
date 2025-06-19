@@ -82,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OpenedUITrs: {fileID: 5892666440370231668}
   m_ClosedUITrs: {fileID: 3701684302327181109}
+  m_Blur: {fileID: 0}
   m_Fade: {fileID: 7773075873298595343}
 --- !u!1 &4553358406593787439
 GameObject:
