@@ -9,6 +9,8 @@ public enum Music
 
 public enum SFX
 {
+    ProgressSound,
+    UnlockSound,
     COUNT
 }
 
@@ -17,7 +19,7 @@ public class AudioManager : SingletonComponent<AudioManager>
     public Transform MusicTrs;
     public Transform SFXTrs;
 
-    private const string AUDIO_PATH = "Sounds";
+    private const string AUDIO_PATH = "Audios";
 
     private Dictionary<Music, AudioSource> m_MusicPlayer = new Dictionary<Music, AudioSource>();
     private AudioSource m_CurrBGMSource;
@@ -52,7 +54,7 @@ public class AudioManager : SingletonComponent<AudioManager>
         for (int i = 0; i < (int)Music.COUNT; i++)
         {
             var audioName = ((Music)i).ToString();
-            var pathStr = $"{AUDIO_PATH}/{audioName}";
+            var pathStr = $"KJH_Resources/{AUDIO_PATH}/{audioName}"; // 나중에 통합하면 KJH_Resources 지울 것
             var audioClip = Resources.Load(pathStr, typeof(AudioClip)) as AudioClip;
             if (!audioClip)
             {
@@ -76,7 +78,7 @@ public class AudioManager : SingletonComponent<AudioManager>
         for (int i = 0; i < (int)SFX.COUNT; i++)
         {
             var audioName = ((SFX)i).ToString();
-            var pathStr = $"{AUDIO_PATH}/{audioName}";
+            var pathStr = $"KJH_Resources/{AUDIO_PATH}/{audioName}"; // 나중에 통합하면 KJH_Resources 지울 것
             var audioClip = Resources.Load(pathStr, typeof(AudioClip)) as AudioClip;
             if (!audioClip)
             {

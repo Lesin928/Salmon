@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Defines the logic behind a single achievement on the UI
 /// </summary>
-public class UIAchievement : MonoBehaviour
+public class AchievementItem : MonoBehaviour
 {
     public TextMeshProUGUI Title, Description, Percent;
     public Image Icon, OverlayIcon, ProgressBar;

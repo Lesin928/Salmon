@@ -38,6 +38,8 @@ public class LobbyUIController : MonoBehaviour
     public void OnClickAchievementsButton()
     {
         // 도전과제 목록 보여주기
+        var uiData = new UIBaseData();
+        UIManager.Instance.OpenUI<AchievementsUI>(uiData);
     }
 
     public void OnClickCreditsButton()

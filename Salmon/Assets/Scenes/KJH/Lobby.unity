@@ -176,17 +176,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
---- !u!114 &206922602 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5869893064832991962, guid: 31c71d95d8fbeb7479842253d3964958, type: 3}
-  m_PrefabInstance: {fileID: 206922601}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4649ecec4d59d264faf94e9ac18561b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &212013556
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,9 +672,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 206922602}
-        m_TargetAssemblyTypeName: AchievementListIngame, Assembly-CSharp
-        m_MethodName: ToggleWindow
+      - m_Target: {fileID: 1697742563}
+        m_TargetAssemblyTypeName: LobbyUIController, Assembly-CSharp
+        m_MethodName: OnClickAchievementsButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

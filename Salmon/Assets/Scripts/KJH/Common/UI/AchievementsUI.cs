@@ -2,10 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Add list of achievements to screen
-/// </summary>
-public class AchievementListIngame : MonoBehaviour
+public class AchievementsUI : UIBase
 {
     [SerializeField] private GameObject scrollContent;
     [SerializeField] private GameObject prefab;
@@ -15,7 +12,6 @@ public class AchievementListIngame : MonoBehaviour
     [SerializeField] private TextMeshProUGUI CompleteText;
     [SerializeField] private Scrollbar Scrollbar;
 
-    private bool MenuOpen = false;
     [Tooltip("Key used to open UI menu. Set to \"None\" to prevent menu from opening with any key press")]
     public KeyCode OpenMenuKey; //Key to open in-game menu
 
@@ -57,45 +53,5 @@ public class AchievementListIngame : MonoBehaviour
     public void ChangeFilter()
     {
         AddAchievements(Filter.options[Filter.value].text);
-    }
-
-    /// <summary>
-    /// Closes the UI window.
-    /// </summary>
-    public void CloseWindow()
-    {
-        MenuOpen = false;
-        Menu.SetActive(MenuOpen);
-    }
-    /// <summary>
-    /// Opens the UI window.
-    /// </summary>
-    public void OpenWindow()
-    {
-        MenuOpen = true;
-        Menu.SetActive(MenuOpen);
-        AddAchievements("All");
-    }
-    /// <summary>
-    /// Toggles the state of the UI window open or closed
-    /// </summary>
-    public void ToggleWindow()
-    {
-        if (MenuOpen)
-        {
-            CloseWindow();
-        }
-        else
-        {
-            OpenWindow();
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(OpenMenuKey))
-        {
-            ToggleWindow();
-        }
     }
 }

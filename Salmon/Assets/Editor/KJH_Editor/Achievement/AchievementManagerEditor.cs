@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using CustomEditorTools;
@@ -213,9 +213,7 @@ public class AchievementManagerEditor : Editor
             EditorGUILayout.PropertyField(serializedObject.FindProperty("StackLocation"));
         }
         EditorGUILayout.PropertyField(serializedObject.FindProperty("ShowExactProgress"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("AutoSave")); 
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("ProgressMadeSound"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("AchievedSound")); 
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("AutoSave"));
         CET.HorizontalLine();
 
         GUILayout.BeginVertical(ManageBackground);

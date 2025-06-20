@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 114639397120908954}
   - component: {fileID: 9164191636813369973}
   m_Layer: 5
-  m_Name: Achievement UI
+  m_Name: AchievementItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1144969350263548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6560818a46314e458030cadd68d4e5a, type: 3}
+  m_Script: {fileID: 11500000, guid: a6bf00629f877f24daffeffe51a001ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Title: {fileID: 421141327081624322}
@@ -132,7 +132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224601945111560548}
   - component: {fileID: 114149886179867102}
-  - component: {fileID: 114057606778467622}
   m_Layer: 5
   m_Name: Information
   m_TagString: Untagged
@@ -188,27 +187,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &114057606778467622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167012648672088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6560818a46314e458030cadd68d4e5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Title: {fileID: 0}
-  Description: {fileID: 0}
-  Percent: {fileID: 0}
-  Icon: {fileID: 0}
-  OverlayIcon: {fileID: 0}
-  ProgressBar: {fileID: 0}
-  SpoilerOverlay: {fileID: 0}
-  SpoilerText: {fileID: 0}
-  AS: {fileID: 0}
 --- !u!1 &1222573805526380
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,8 @@ public class PauseUI : UIBase
 
     public void OnClickAchievementsButton()
     {
-
+        var uiData = new UIBaseData();
+        UIManager.Instance.OpenUI<AchievementsUI>(uiData);
     }
 
     public void OnClickReturnToLobbyButton()

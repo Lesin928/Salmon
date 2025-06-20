@@ -24,12 +24,6 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     public bool AutoSave;
     [Tooltip("The message which will be displayed on the UI if an achievement is marked as a spoiler.")]
     public string SpoilerAchievementMessage = "Hidden";
-    [Tooltip("The sound which plays when an achievement is unlocked is displayed to a user. Sounds are only played when Display Achievements is true.")]
-    public AudioClip AchievedSound;
-    [Tooltip("The sound which plays when a progress update is displayed to a user. Sounds are only played when Display Achievements is true.")]
-    public AudioClip ProgressMadeSound;
-
-    private AudioSource AudioSource;
 
     public List<AchievementState> States = new List<AchievementState>();                       //List of achievement states (achieved, progress and last notification)
     public List<AchievementInfromation> AchievementList = new List<AchievementInfromation>();  //List of all available achievements
@@ -49,7 +43,6 @@ public class AchievementManager : SingletonComponent<AchievementManager>
 
     protected override bool InitInstance()
     {
-        AudioSource = gameObject.GetComponent<AudioSource>();
         Stack = GetComponentInChildren<AchievementStack>();
         LoadAchievementState();
         return true;
@@ -67,14 +60,6 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     }
     #endregion
 
-    private void PlaySound(AudioClip Sound)
-    {
-        if (AudioSource != null)
-        {
-            AudioSource.clip = Sound;
-            AudioSource.Play();
-        }
-    }
     # region Miscellaneous
     /// <summary>
     /// Does an achievement exist in the list
@@ -218,30 +203,26 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     /// </summary>
     public void SaveAchievementState()
     {
-        for (int i = 0; i < States.Count; i++)
+        var userAchievementData = UserDataManager.Instance.GetUserData<UserAchievementData>();
+
+        if (userAchievementData != null)
         {
-            PlayerPrefs.SetString("AchievementState_" + i, JsonUtility.ToJson(States[i]));
+            userAchievementData.States = States;
+            userAchievementData.AchievementList = AchievementList;
+            userAchievementData.SaveData();
         }
-        PlayerPrefs.Save();
     }
     /// <summary>
     /// Loads all progress and achievement states from player prefs. This function is automatically called if the Auto Load setting is set to true.
     /// </summary>
     public void LoadAchievementState()
     {
-        AchievementState NewState;
-        States.Clear();
+        var userAchievementData = UserDataManager.Instance.GetUserData<UserAchievementData>();
 
-        for (int i = 0; i < AchievementList.Count; i++)
+        if (userAchievementData != null)
         {
-            //Ensure that new project get default values
-            if (PlayerPrefs.HasKey("AchievementState_" + i))
-            {
-                NewState = JsonUtility.FromJson<AchievementState>(PlayerPrefs.GetString("AchievementState_" + i));
-                States.Add(NewState);
-            }
-            else { States.Add(new AchievementState()); }
-
+            States = userAchievementData.States;
+            AchievementList = userAchievementData.AchievementList;
         }
     }
     /// <summary>
@@ -249,13 +230,14 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     /// </summary>
     public void ResetAchievementState()
     {
-        States.Clear();
-        for (int i = 0; i < AchievementList.Count; i++)
+        var userAchievementData = UserDataManager.Instance.GetUserData<UserAchievementData>();
+
+        if (userAchievementData != null)
         {
-            PlayerPrefs.DeleteKey("AchievementState_" + i);
-            States.Add(new AchievementState());
+            userAchievementData.SetDefaultData();
+            States = userAchievementData.States;
+            AchievementList = userAchievementData.AchievementList;
         }
-        SaveAchievementState();
     }
     #endregion
 
@@ -296,7 +278,7 @@ public class AchievementManager : SingletonComponent<AchievementManager>
                     //When it finds the largest valid notification point
                     if (States[Index].Progress >= AchievementList[Index].NotificationFrequency * i)
                     {
-                        PlaySound(ProgressMadeSound);
+                        AudioManager.Instance.PlaySFX(SFX.ProgressSound);
                         States[Index].LastProgressUpdate = i;
                         Stack.ScheduleAchievementDisplay(Index);
                         return;
@@ -305,7 +287,7 @@ public class AchievementManager : SingletonComponent<AchievementManager>
             }
             else
             {
-                PlaySound(AchievedSound);
+                AudioManager.Instance.PlaySFX(SFX.UnlockSound);
                 Stack.ScheduleAchievementDisplay(Index);
             }
         }

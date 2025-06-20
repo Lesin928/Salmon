@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ using UnityEngine;
 public class AchievementStack : MonoBehaviour
 {
     public RectTransform[] StackPanels;
-    public List<UIAchievement> BackLog = new List<UIAchievement>();
+    public List<AchievementItem> BackLog = new List<AchievementItem>();
 
     public GameObject AchievementTemplate;
     private AchievementManager AM;
@@ -24,7 +24,7 @@ public class AchievementStack : MonoBehaviour
     /// <param name="Index">Index of achievement to add</param>
     public void ScheduleAchievementDisplay(int Index)
     {
-        var Spawned = Instantiate(AchievementTemplate).GetComponent<UIAchievement>();
+        var Spawned = Instantiate(AchievementTemplate).GetComponent<AchievementItem>();
         Spawned.AS = this;
         Spawned.Set(AM.AchievementList[Index], AM.States[Index]);
 
