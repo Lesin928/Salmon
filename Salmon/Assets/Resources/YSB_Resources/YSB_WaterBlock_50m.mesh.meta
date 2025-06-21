@@ -1,7 +1,8 @@
 fileFormatVersion: 2
-guid: 6dae34e3074251b4cb0e8d658a7bc4d7
-PrefabImporter:
+guid: 3da23cdf512599b42881988944f3918c
+NativeFormatImporter:
   externalObjects: {}
+  mainObjectFileID: 4300000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
@@ -10,5 +11,5 @@ AssetOrigin:
   productId: 191449
   packageName: Simple Water Shader URP
   packageVersion: 1.0.0
-  assetPath: Assets/IgniteCoders/Simple Water Shader/Prefabs/WaterReflectionCamera.prefab
+  assetPath: Assets/IgniteCoders/Simple Water Shader/Resources/WaterBlock_50m.mesh
   uploadId: 422776
