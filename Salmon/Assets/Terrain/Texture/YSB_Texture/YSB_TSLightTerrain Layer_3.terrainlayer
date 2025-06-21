@@ -6,11 +6,11 @@ TerrainLayer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TSLightTerrain Layer_1
-  m_DiffuseTexture: {fileID: 2800000, guid: e93355eafa8f830479bf21c271197334, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 30c1099de0b2c1e4d9a97d33df593740, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: 2c2c6309f1194904ebc44ccd8b5e65ed, type: 3}
-  m_TileSize: {x: 8, y: 8}
+  m_Name: YSB_TSLightTerrain Layer_3
+  m_DiffuseTexture: {fileID: 2800000, guid: 52e97c3e9cb0f614c8b9a6c6765756d5, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: b54c7db0f5e70294eb3866d5c7ad63b5, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: f04c7769e7c925245aec87dc045ae0c3, type: 3}
+  m_TileSize: {x: 12, y: 12}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 1, g: 1, b: 1, a: 0}
   m_Metallic: 0
