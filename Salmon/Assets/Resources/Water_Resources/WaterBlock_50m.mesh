@@ -6,7 +6,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PMK_WaterBlock_50m
+  m_Name: WaterBlock_50m
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2

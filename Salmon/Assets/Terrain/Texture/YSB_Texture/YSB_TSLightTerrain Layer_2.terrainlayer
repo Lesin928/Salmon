@@ -6,7 +6,7 @@ TerrainLayer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TSLightTerrain Layer_2
+  m_Name: YSB_TSLightTerrain Layer_2
   m_DiffuseTexture: {fileID: 2800000, guid: 562fddc1ab108804cbc3206fa2c92750, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 2b9b807f14b1a1740954e8305a3bcce9, type: 3}
   m_MaskMapTexture: {fileID: 2800000, guid: e3e17f7ee6882624bbec7de8d04946e2, type: 3}
