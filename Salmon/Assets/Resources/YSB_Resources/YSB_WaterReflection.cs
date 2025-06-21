@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//복사한다고 임시로 이름 바꾸긴했는데,나중에 민규님거랑 통합해도 될거같아요.
-public class WaterReflection_YSB : MonoBehaviour
+public class YSB_WaterReflection : MonoBehaviour
 {
     // referenses
     Camera mainCamera;
