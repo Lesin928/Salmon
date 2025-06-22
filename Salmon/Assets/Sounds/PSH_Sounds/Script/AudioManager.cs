@@ -1,5 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UIElements;
+using System.Linq;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -21,6 +24,9 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField, Header("Bear Clips")]
     private List<AudioClipData> bearClips;
+
+    [SerializeField, Header("Voice Clips")]
+    public List<AudioClipData> voiceClips;
 
     public enum SFXCategory { UI, Monster, Object, Player, BGM }
 
@@ -112,6 +118,32 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning($"[AudioManager] Clip '{name}' not found.");
         }
     }
+
+
+    //사운드 이름을 받아 해당 사운드를 루프로 재생 
+    public void PlayLoop(string name)
+    {
+        if (clipDict.TryGetValue(name, out var clipData))
+        {
+            var source = GetNextAvailableSFXSource();
+            source.clip = clipData.clip;
+            source.volume = clipData.volume;
+            source.loop = true; // 루프 설정
+
+            source.spatialBlend = 1f;
+            source.minDistance = 1f;
+            source.maxDistance = 500f;
+            source.rolloffMode = AudioRolloffMode.Logarithmic;
+
+            source.Play();
+
+        }
+        else
+        {
+            Debug.LogWarning($"[AudioManager] Clip '{name}' not found.");
+        }
+    }
+
 
     //지정된 위치에서 사운드 재생
     public void PlayAt(string name, Vector3 position)
@@ -235,6 +267,57 @@ public class AudioManager : MonoBehaviour
     {
         bgmSource.volume = Mathf.Clamp01(volume);
     }
+
+    public void RandomPlay(string name)
+    {
+        List<AudioClipData> targetList = null;
+
+        // 문자열로 리스트 이름 비교
+        switch (name)
+        {
+            case "bgmClips":
+                targetList = bgmClips;
+                break;
+            case "uiClips":
+                targetList = uiClips;
+                break;
+            case "objectClips":
+                targetList = objectClips;
+                break;
+            case "playerClips":
+                targetList = playerClips;
+                break;
+            case "bearClips":
+                targetList = bearClips;
+                break;
+            case "voiceClips":
+                targetList = voiceClips;
+                break;
+            default:
+                Debug.LogWarning($"[AudioManager] '{name}'이라는 리스트를 찾을 수 없습니다.");
+                return;
+        }
+
+        if (targetList == null || targetList.Count == 0)
+        {
+            Debug.LogWarning($"[AudioManager] '{name}' 리스트가 비어 있습니다.");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, targetList.Count);
+        AudioClip clip = targetList[randomIndex].clip;
+
+        if (clip == null)
+        {
+            Debug.LogWarning($"[AudioManager] 선택된 클립이 null입니다.");
+            return;
+        }
+
+        Play(clip.name);  // 또는 Play(clip) 형태
+        Debug.Log($"[AudioManager] {name}에서 랜덤 재생: {clip.name}");
+    }
+
+
 
     private System.Collections.IEnumerator FadeInBGM(float time, float targetVolume)
     {
