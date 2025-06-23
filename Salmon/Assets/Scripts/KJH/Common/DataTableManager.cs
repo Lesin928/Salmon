@@ -51,8 +51,13 @@ public class DataTableManager : SingletonComponent<DataTableManager>
             {
                 AchievementType = (AchievementType)Enum.Parse(typeof(AchievementType), data["achievement_type"].ToString()),
                 AchievementName = data["achievement_name"].ToString(),
+                AchievementDescription = data["achievement_description"].ToString(),
+                LockedIcon = data["locked_icon"].ToString(),
+                AchievedIcon = data["achieved_icon"].ToString(),
                 AchievementGoal = Convert.ToInt32(data["achievement_goal"]),
-                AchievementRewardAmount = Convert.ToInt32(data["achievement_reward_amount"])
+                NotificationFrequency = Convert.ToInt32(data["notification_frequency"]),
+                Suffix = data["suffix"].ToString(),
+                IsHidden = Convert.ToBoolean(data["is_hidden"])
             };
 
             AchievementDataTable.Add(achievementData);

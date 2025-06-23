@@ -363,8 +363,6 @@ MonoBehaviour:
   StackLocation: 3
   AutoSave: 1
   SpoilerAchievementMessage: Hidden
-  AchievedSound: {fileID: 8300000, guid: 3400fb2a60564af4db6cc1c28c188006, type: 3}
-  ProgressMadeSound: {fileID: 8300000, guid: 9492b32862561624aa75d621f48074c5, type: 3}
   States:
   - Progress: 0
     LastProgressUpdate: 0
