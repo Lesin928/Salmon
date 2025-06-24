@@ -6,7 +6,6 @@ public class AchievementsUI : UIBase
 {
     [SerializeField] private GameObject scrollContent;
     [SerializeField] private GameObject prefab;
-    [SerializeField] private GameObject Menu;
     [SerializeField] private TMP_Dropdown Filter;
     [SerializeField] private TextMeshProUGUI CountText;
     [SerializeField] private TextMeshProUGUI CompleteText;
@@ -14,6 +13,12 @@ public class AchievementsUI : UIBase
 
     [Tooltip("Key used to open UI menu. Set to \"None\" to prevent menu from opening with any key press")]
     public KeyCode OpenMenuKey; //Key to open in-game menu
+
+    public override void SetInfo(UIBaseData uiData)
+    {
+        base.SetInfo(uiData);
+        AddAchievements("All");
+    }
 
     /// <summary>
     /// Adds all achievements to the UI based on a filter

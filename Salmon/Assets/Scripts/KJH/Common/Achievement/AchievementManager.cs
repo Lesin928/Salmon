@@ -5,6 +5,17 @@ using System.Linq;
 using Singleton.Component;
 
 /// <summary>
+/// Place where an achievement will be displayed on the screen
+/// </summary>
+public enum AchievementStackLocation
+{
+    TopLeft,
+    TopRight,
+    BottomLeft,
+    BottomRight
+}
+
+/// <summary>
 /// Controls interactions with the Achievement System
 /// </summary>
 [System.Serializable]
@@ -151,18 +162,15 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     /// <param name="Progress">Set progress to this value</param>
     public void SetAchievementProgress(int Index, float Progress)
     {
-        if (AchievementList[Index].Progression)
+        if (States[Index].Progress >= AchievementList[Index].ProgressGoal)
         {
-            if (States[Index].Progress >= AchievementList[Index].ProgressGoal)
-            {
-                Unlock(Index);
-            }
-            else
-            {
-                States[Index].Progress = Progress;
-                DisplayUnlock(Index);
-                AutoSaveStates();
-            }
+            Unlock(Index);
+        }
+        else
+        {
+            States[Index].Progress = Progress;
+            DisplayUnlock(Index);
+            AutoSaveStates();
         }
     }
     /// <summary>
@@ -181,18 +189,15 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     /// <param name="Progress">Add this number to progress</param>
     public void AddAchievementProgress(int Index, float Progress)
     {
-        if (AchievementList[Index].Progression)
+        if (States[Index].Progress + Progress >= AchievementList[Index].ProgressGoal)
         {
-            if (States[Index].Progress + Progress >= AchievementList[Index].ProgressGoal)
-            {
-                Unlock(Index);
-            }
-            else
-            {
-                States[Index].Progress += Progress;
-                DisplayUnlock(Index);
-                AutoSaveStates();
-            }
+            Unlock(Index);
+        }
+        else
+        {
+            States[Index].Progress += Progress;
+            DisplayUnlock(Index);
+            AutoSaveStates();
         }
     }
     #endregion
@@ -268,7 +273,7 @@ public class AchievementManager : SingletonComponent<AchievementManager>
         if (DisplayAchievements && !AchievementList[Index].Spoiler || States[Index].Achieved)
         {
             //If not achieved
-            if (AchievementList[Index].Progression && States[Index].Progress < AchievementList[Index].ProgressGoal)
+            if (States[Index].Progress < AchievementList[Index].ProgressGoal)
             {
                 int Steps = (int)AchievementList[Index].ProgressGoal / (int)AchievementList[Index].NotificationFrequency;
 

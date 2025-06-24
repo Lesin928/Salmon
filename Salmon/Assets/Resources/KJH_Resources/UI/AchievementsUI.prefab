@@ -922,13 +922,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIOpenAnim: {fileID: 0}
-  scrollContent: {fileID: 0}
-  prefab: {fileID: 0}
+  scrollContent: {fileID: 670843923690501127}
+  prefab: {fileID: 1144969350263548, guid: 52f308551e6b1a347a3a0d7de8089fa2, type: 3}
   Menu: {fileID: 0}
-  Filter: {fileID: 0}
-  CountText: {fileID: 0}
-  CompleteText: {fileID: 0}
-  Scrollbar: {fileID: 0}
+  Filter: {fileID: 6745888809580225205}
+  CountText: {fileID: 7131266100431409211}
+  CompleteText: {fileID: 8055396990825278716}
+  Scrollbar: {fileID: 637638829051478219}
   OpenMenuKey: 0
 --- !u!1 &1402087602128031276
 GameObject:

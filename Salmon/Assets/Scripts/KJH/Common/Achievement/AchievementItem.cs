@@ -38,18 +38,9 @@ public class AchievementItem : MonoBehaviour
             Title.text = Information.DisplayName;
             Description.text = Information.Description;
 
-            if (Information.LockOverlay && !State.Achieved)
-            {
-                OverlayIcon.gameObject.SetActive(true);
-                OverlayIcon.sprite = Information.LockedIcon;
-                Icon.sprite = Information.AchievedIcon;
-            }
-            else
-            {
-                Icon.sprite = State.Achieved ? Information.AchievedIcon : Information.LockedIcon;
-            }
+            Icon.sprite = State.Achieved ? Information.AchievedIcon : Information.LockedIcon;
 
-            if (Information.Progression)
+            if (Information.ProgressGoal > 1)
             {
                 float CurrentProgress = AchievementManager.Instance.ShowExactProgress ? State.Progress : (State.LastProgressUpdate * Information.NotificationFrequency);
                 float DisplayProgress = State.Achieved ? Information.ProgressGoal : CurrentProgress;

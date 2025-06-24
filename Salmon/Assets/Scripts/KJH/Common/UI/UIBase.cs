@@ -15,7 +15,6 @@ public class UIBase : MonoBehaviour
     private Action m_OnShow;    //UI 표시 시 실행할 액션
     private Action m_OnClose;   //UI 닫기 시 실행할 액션
 
-
     // UI 초기화 메서드
     public virtual void Init(Transform anchor)
     {
@@ -39,7 +38,6 @@ public class UIBase : MonoBehaviour
     // UI 정보 설정 메서드
     public virtual void SetInfo(UIBaseData uiData)
     {
-
         m_OnShow = uiData.OnShow;      // 표시 콜백 설정
         m_OnClose = uiData.OnClose;    // 닫기 콜백 설정
     }
