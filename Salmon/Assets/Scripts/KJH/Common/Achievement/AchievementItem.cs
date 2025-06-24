@@ -26,7 +26,7 @@ public class AchievementItem : MonoBehaviour
     /// <summary>
     /// Add information  about an Achievement to the UI elements
     /// </summary>
-    public void Set(AchievementInfromation Information, AchievementState State)
+    public void Set(AchievementInformation Information, AchievementState State)
     {
         if (Information.Spoiler && !State.Achieved)
         {

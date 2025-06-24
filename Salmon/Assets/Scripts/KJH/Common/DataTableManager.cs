@@ -49,7 +49,7 @@ public class DataTableManager : SingletonComponent<DataTableManager>
         {
             var achievementData = new AchievementData
             {
-                AchievementType = (AchievementType)Enum.Parse(typeof(AchievementType), data["achievement_type"].ToString()),
+                AchievementKey = (AchievementKey)Enum.Parse(typeof(AchievementKey), data["achievement_key"].ToString()),
                 AchievementName = data["achievement_name"].ToString(),
                 AchievementDescription = data["achievement_description"].ToString(),
                 LockedIcon = data["locked_icon"].ToString(),
@@ -64,9 +64,9 @@ public class DataTableManager : SingletonComponent<DataTableManager>
         }
     }
 
-    public AchievementData GetAchievementData(AchievementType achievementType)
+    public AchievementData GetAchievementData(AchievementKey achievementKey)
     {
-        return AchievementDataTable.Where(item => item.AchievementType == achievementType).FirstOrDefault();
+        return AchievementDataTable.Where(item => item.AchievementKey == achievementKey).FirstOrDefault();
     }
     #endregion
 }

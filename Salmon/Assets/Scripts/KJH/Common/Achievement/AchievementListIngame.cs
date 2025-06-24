@@ -45,7 +45,7 @@ public class AchievementListIngame : MonoBehaviour
         Scrollbar.value = 1;
     }
 
-    public void AddAchievementToUI(AchievementInfromation Achievement, AchievementState State)
+    public void AddAchievementToUI(AchievementInformation Achievement, AchievementState State)
     {
         AchievementItem UIAchievement = Instantiate(prefab, new Vector3(0f, 0f, 0f), Quaternion.identity).GetComponent<AchievementItem>();
         UIAchievement.Set(Achievement, State);

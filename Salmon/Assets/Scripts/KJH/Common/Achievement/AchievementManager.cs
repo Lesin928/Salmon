@@ -37,7 +37,7 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     public string SpoilerAchievementMessage = "Hidden";
 
     public List<AchievementState> States = new List<AchievementState>();                       //List of achievement states (achieved, progress and last notification)
-    public List<AchievementInfromation> AchievementList = new List<AchievementInfromation>();  //List of all available achievements
+    public List<AchievementInformation> AchievementList = new List<AchievementInformation>();  //List of all available achievements
 
     [Tooltip("If true, one achievement will be automatically unlocked once all others have been completed")]
     public bool UseFinalAchievement = false;

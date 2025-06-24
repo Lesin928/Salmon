@@ -1,14 +1,11 @@
-public enum AchievementType
+public enum AchievementKey
 {
-    CollectGold,
-    ClearChapter1,
-    ClearChapter2,
-    ClearChapter3,
+    EXAMPLE
 }
 
 public class AchievementData
 {
-    public AchievementType AchievementType;
+    public AchievementKey AchievementKey;
     public string AchievementName;
     public string AchievementDescription;
     public string LockedIcon;

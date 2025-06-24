@@ -11,6 +11,7 @@ public class GameManager : SingletonComponent<GameManager>
 
     protected override bool InitInstance()
     {
+        PlayerPrefs.DeleteAll(); // 디버깅용, 실제 배포시 삭제 필요
         // 유저 데이터 로드
         // 유저 데이터 매니저를 통한 데이터 로드
         UserDataManager.Instance.LoadUserData();

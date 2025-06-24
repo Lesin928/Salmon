@@ -8,7 +8,7 @@ using UnityEngine;
 /// Storesinformation related to a single achievement
 /// </summary>
 [System.Serializable]
-public struct AchievementInfromation
+public struct AchievementInformation
 {
     [Tooltip("Name used to unlock/set achievement progress")]
     [SerializeField] public string Key;
@@ -50,11 +50,27 @@ public class AchievementState
 
 public class UserAchievementData : IUserData
 {
-    public List<AchievementState> States = new List<AchievementState>();                       //List of achievement states (achieved, progress and last notification)
-    public List<AchievementInfromation> AchievementList = new List<AchievementInfromation>();  //List of all available achievements
+    public List<AchievementState> States { get; set; } = new List<AchievementState>();                       //List of achievement states (achieved, progress and last notification)
+    public List<AchievementInformation> AchievementList { get; set; } = new List<AchievementInformation>();  //List of all available achievements
+
+    private const string ACHIEVEMENT_PATH = "Achievements";
 
     public void SetDefaultData()
     {
+        AchievementList.Clear();
+        AchievementList = DataTableManager.Instance.GetAchievementDataList().Select(x => new AchievementInformation
+        {
+            Key = x.AchievementKey.ToString(),
+            DisplayName = x.AchievementName,
+            Description = x.AchievementDescription,
+            LockedIcon = Resources.Load<Sprite>($"KJH_Resources/{ACHIEVEMENT_PATH}/{x.LockedIcon}"),
+            AchievedIcon = Resources.Load<Sprite>($"KJH_Resources/{ACHIEVEMENT_PATH}/{x.AchievedIcon}"),
+            Spoiler = x.IsHidden,
+            ProgressGoal = x.AchievementGoal,
+            NotificationFrequency = x.NotificationFrequency,
+            ProgressSuffix = x.Suffix
+        }).ToList();
+
         States.Clear();
         for (int i = 0; i < AchievementList.Count; i++)
         {

@@ -1,0 +1,2 @@
+achievement_key,achievement_name,achievement_description,locked_icon,achieved_icon,achievement_goal,notification_frequency,suffix,is_hidden
+EXAMPLE,Example,Example,,,1,0,,FALSE
