@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1780
     height: 988
   m_ShowMode: 4
-  m_Title: "\uC52C"
+  m_Title: "\uACC4\uCE35 \uAD6C\uC870"
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -322,8 +322,8 @@ MonoBehaviour:
     y: 0
     width: 617
     height: 728
-  m_MinSize: {x: 51, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 50, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 20}
@@ -1481,23 +1481,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 741ad6ff
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: bc22d6ff4e29d6fff629d6ff9c56d6ff12a4faff62c0ffff18c2ffff28c8ffff9ee0000068e60000
+      m_ExpandedIDs: d8faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: slamon_Anim_Test
-        m_OriginalName: slamon_Anim_Test
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -351240
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
         m_ClientGUIView: {fileID: 15}
@@ -1555,7 +1555,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sounds/PSH_Sounds
+    - Assets/Sounds/PSH_Sounds/Voice
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1565,30 +1565,30 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Sounds/PSH_Sounds
+  - Assets/Sounds/PSH_Sounds/Voice
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Unity\Salmon\Salmon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 37}
-    m_SelectedIDs: 60d80000
-    m_LastClickedID: 55392
-    m_ExpandedIDs: 000000005ed8000060d8000062d8000064d8000066d8000068d800006ad800006cd800006ed8000070d8000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 561}
+    m_SelectedIDs: 06ce0000
+    m_LastClickedID: 52742
+    m_ExpandedIDs: 0000000018cb00001acb00001ccb00001ecb000020cb000022cb000024cb000026cb000028cb00002acb000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: PSH
-      m_OriginalName: PSH
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 55562
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 6}
@@ -1603,7 +1603,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005ed8000060d8000062d8000064d8000066d8000068d800006ad800006cd800006ed8000070d80000
+    m_ExpandedIDs: 0000000018cb00001acb00001ccb00001ecb000020cb000022cb000024cb000026cb000028cb00002acb0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1635,18 +1635,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000085b00004c95000006b7000044910000409100003c910000b8960000c89f00006ca900009cb20000b8b4000056c3000024bf000010a10000cc9c0000789f0000d6c90000d2c90000b4a70000fcde000070ed000032850100ec840100128501005ca50000baa6000032a60000d8a2000094a400009ca500003ea4000060cb0000dcc0000010e10000329d000020a200008c610200e66102006aa000005a8d02002c8a01005ac30000049e000002f60000320201004e0f010046740100069e0000720f0100829e0000869e0000809e0000a2c401009ec4010096c601001a7501002cd4000034420400d4b3000020c200007abd000064cc000060ce000062d1000016cb000004d80000c0d20000b4df0000d4e40000163201001ce0000046f5000022620100c6f50000000000008ec90000fce200003eee000014f30000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Voice
-      m_OriginalName: Voice
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 65622
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 6}

@@ -28,6 +28,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField, Header("Voice Clips")]
     public List<AudioClipData> voiceClips;
 
+    [SerializeField, Header("Master Volume")]
+    public float masterVolume;
+
     public enum SFXCategory { UI, Monster, Object, Player, BGM }
 
     [System.Serializable]
@@ -266,6 +269,12 @@ public class AudioManager : MonoBehaviour
     public void SetBGMVolume(float volume)
     {
         bgmSource.volume = Mathf.Clamp01(volume);
+    }
+
+    //마스터 볼륨 실시간 조절 
+    public void SetMasterVolume(float masterVolume)
+    {
+        AudioListener.volume = Mathf.Clamp01(masterVolume);
     }
 
     public void RandomPlay(string name)

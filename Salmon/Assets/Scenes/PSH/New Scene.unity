@@ -362,7 +362,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 0}
-  bgmClips: []
+  bgmClips:
+  - name: Title
+    clip: {fileID: 8300000, guid: 6ad07c47ab8f740bc968493850e82921, type: 3}
+    volume: 0.38
+  - name: Game
+    clip: {fileID: 8300000, guid: 3b1ab403a89724cb19f6c70b171b29e3, type: 3}
+    volume: 0
   uiClips:
   - name: UI_Button
     clip: {fileID: 8300000, guid: 0e3ec7146a3ed6e40ac18debb6bb4a02, type: 3}
@@ -403,6 +409,14 @@ MonoBehaviour:
   - name: Bear_Move
     clip: {fileID: 8300000, guid: 85d25e225156a204a83135a2015f6f8b, type: 3}
     volume: 0
+  voiceClips:
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+  masterVolume: 0
 --- !u!4 &978745141
 Transform:
   m_ObjectHideFlags: 0
