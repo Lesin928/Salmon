@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Plantlet 01
-  m_DiffuseTexture: {fileID: 2800000, guid: 426dd22423bce4345a07397cc573e7d8, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: de3735c31454f3341ac987e53025b55c, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: de2e51d118294bd45b622cf0cc624428, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 99f5feb839f5900478f519bd169cfffe, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 7f4fd48c689e6c049bdb60e634d9458e, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 4690099697e14a549a96a9f6fd0a513c, type: 3}
   m_TileSize: {x: 1.5, y: 1.5}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 1, g: 1, b: 1, a: 0}
@@ -20,3 +20,4 @@ TerrainLayer:
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_SmoothnessSource: 1
