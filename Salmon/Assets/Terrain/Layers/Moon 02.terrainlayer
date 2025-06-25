@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Moon 02
-  m_DiffuseTexture: {fileID: 2800000, guid: 5f208e0881c08034586499e1053c27a4, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 64d1d023a88faa145b3daff6f724177b, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: 7a281f2480801e74c9f9bf985cec9120, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 379150b0e6ec89f47b941d66948130c0, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: c85456b3d347275418b843637a3d7b26, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: b0371986e6e5e9741b2a302b817fddfb, type: 3}
   m_TileSize: {x: 5, y: 5}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 1, g: 1, b: 1, a: 0}
@@ -20,4 +20,3 @@ TerrainLayer:
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
-  m_SmoothnessSource: 1

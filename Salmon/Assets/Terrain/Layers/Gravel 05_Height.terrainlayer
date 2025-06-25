@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Gravel 05_Height
-  m_DiffuseTexture: {fileID: 2800000, guid: 3e6b0f1744084894e96947b9678b212f, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 6261de2241ff7d541bf549f64f93d699, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: 5963837edd81d294fa4b3fb0c28a68dd, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 9fbfa6c944b836e44bd2ba2ebb9b8a9f, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: ff52fe44f49217545884ef34940813a9, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 358b09b0352c80044ada8aa2639651ab, type: 3}
   m_TileSize: {x: 2, y: 2}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 1, g: 1, b: 1, a: 0}

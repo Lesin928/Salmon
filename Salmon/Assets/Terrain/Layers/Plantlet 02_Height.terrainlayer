@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Plantlet 02_Height
-  m_DiffuseTexture: {fileID: 2800000, guid: 22e5f0bd1a7f07a4a9deb30d83f07972, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: fb08af62804c2804881f9719b8735f28, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: f2b357a2305d7a54190727ce1761b664, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 007e0be6842d3bf4c9973dba5e9b248f, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: c38af066ce03902469898b1c66bca8cd, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 58fc259be36ee3d4a96abc5a3f779448, type: 3}
   m_TileSize: {x: 1.5, y: 1.5}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 1, g: 1, b: 1, a: 0}

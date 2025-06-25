@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Leaves 02_Height
-  m_DiffuseTexture: {fileID: 2800000, guid: dcb13cafd8e4c0a44b6e07e53e678657, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: a65f898eca2f3f54aacab817f0c36913, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: 9e4493007bf3e894cb1139bd9548ebc7, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 07889a82b4eaf4945847c9efa62bb476, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: c2d91454d30ec8e4eb5ef7305d77b337, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: a28ed9815e9ce134fade5d03ccdaf53e, type: 3}
   m_TileSize: {x: 2, y: 2}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 1, g: 1, b: 1, a: 0}
