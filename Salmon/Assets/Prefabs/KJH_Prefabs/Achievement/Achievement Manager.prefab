@@ -363,22 +363,8 @@ MonoBehaviour:
   StackLocation: 3
   AutoSave: 1
   SpoilerAchievementMessage: Hidden
-  States:
-  - Progress: 0
-    LastProgressUpdate: 0
-    Achieved: 0
-  AchievementList:
-  - Key: Example
-    DisplayName: Example
-    Description: Example
-    LockedIcon: {fileID: 0}
-    LockOverlay: 0
-    AchievedIcon: {fileID: 0}
-    Spoiler: 0
-    Progression: 0
-    ProgressGoal: 0
-    NotificationFrequency: 0
-    ProgressSuffix: 
+  States: []
+  AchievementList: []
   UseFinalAchievement: 0
   FinalAchievementKey: 
   Stack: {fileID: 5869893064589555812}

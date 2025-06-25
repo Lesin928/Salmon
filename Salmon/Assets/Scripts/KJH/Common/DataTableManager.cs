@@ -43,7 +43,7 @@ public class DataTableManager : SingletonComponent<DataTableManager>
 
     private void LoadAchievementDataTable()
     {
-        var parsedDataTable = CSVReader.Read($"{DATA_PATH}/{ACHIEVEMENT_DATA_TABLE}");
+        var parsedDataTable = CSVReader.Read($"KJH_Resources/{DATA_PATH}/{ACHIEVEMENT_DATA_TABLE}"); // 통합할 때 KJH_Resources를 지울 것
 
         foreach (var data in parsedDataTable)
         {
