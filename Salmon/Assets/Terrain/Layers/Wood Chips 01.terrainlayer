@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wood Chips 01
-  m_DiffuseTexture: {fileID: 2800000, guid: 53c5db34da2d57648a895edae30061db, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 7e78fa5dd9a93f34f8108029718feefa, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: e0c86d3fd637b8b4aab9edc996ed17e6, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 7c16d2aeeb63d7d4a94854b52b2374eb, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: bbb14d9698951fa40bfeb1f4b4c872c0, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: d39831f88933e204baae3c2465c51d05, type: 3}
   m_TileSize: {x: 2, y: 2}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 1, g: 1, b: 1, a: 0}
@@ -20,4 +20,3 @@ TerrainLayer:
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
-  m_SmoothnessSource: 1

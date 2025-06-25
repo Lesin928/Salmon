@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sand 03_Height
-  m_DiffuseTexture: {fileID: 2800000, guid: 724c06b42b052c849854c7a60121beb4, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 8920bdb0b77b23b4bbfd54e5c633caf3, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: 8d9540029bda45644ae9b9c415d355a5, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 741ae3c32da2a574e8ef967827beedfc, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 9beaee85d3201054091e77725ba9f28f, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 40410fc378bae8346b028aefeb2eb79c, type: 3}
   m_TileSize: {x: 2, y: 2}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 1, g: 1, b: 1, a: 0}

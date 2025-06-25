@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wood Chips 02_Height
-  m_DiffuseTexture: {fileID: 2800000, guid: 2983f68771fe2134e8491ce8fd458314, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 2377f01e2036f5a4b929ddb47977a1be, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: cd70f1ec383b5ed4eb9e003c5a10f6cc, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 9fa7449030fcc684ebb2db7262eb9beb, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: ae59a54a837b0734bb6ae53f3f88aa53, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 123d264d9fafdd84084056b94b4a1e1b, type: 3}
   m_TileSize: {x: 2, y: 2}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 1, g: 1, b: 1, a: 0}
