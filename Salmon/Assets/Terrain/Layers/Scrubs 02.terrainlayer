@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Scrubs 02
-  m_DiffuseTexture: {fileID: 2800000, guid: da9050eeeb23f1f4bb8f757b2b1b7c6d, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: e2147947d8b07014db5aaab3fbbc4803, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: 4ab08fa016185554e94945dc3092cca1, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: ec8cabd4f9bef8d4a97dfeae47506df9, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 70225379d2033f54085d3a8f2ba8a02e, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 71ffd802e474ab649a47ffb676d8880f, type: 3}
   m_TileSize: {x: 2, y: 2}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 1, g: 1, b: 1, a: 0}
@@ -20,3 +20,4 @@ TerrainLayer:
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_SmoothnessSource: 1
