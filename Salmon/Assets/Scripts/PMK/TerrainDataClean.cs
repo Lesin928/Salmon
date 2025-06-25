@@ -21,7 +21,7 @@ public class TerrainDataCleaner
         foreach (string scenePath in allScenePaths)
         {
             var scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
-            Terrain[] terrains = Resources.FindObjectsOfTypeAll<Terrain>();
+            Terrain[] terrains = GameObject.FindObjectsOfType<Terrain>();
 
             foreach (var terrain in terrains)
             {
