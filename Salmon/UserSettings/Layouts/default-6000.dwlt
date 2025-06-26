@@ -322,8 +322,8 @@ MonoBehaviour:
     y: 0
     width: 617
     height: 728
-  m_MinSize: {x: 50, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 51, y: 76}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 20}
@@ -450,8 +450,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "\uAC8C\uC784\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 13
-    y: 335
+    x: 0
+    y: 24
     width: 616
     height: 702
   m_SerializedDataModeController:
@@ -551,8 +551,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "\uC52C\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 630
-    y: 335
+    x: 618
+    y: 24
     width: 637
     height: 702
   m_SerializedDataModeController:
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.0016307514, y: 0.921328, z: -0.38878086, w: -0.003869623}
     speed: 2
-    m_Value: {x: -0.0016307404, y: 0.92132175, z: -0.3887782, w: -0.0038695966}
+    m_Value: {x: -0.0016307514, y: 0.921328, z: -0.3887809, w: -0.0038696232}
   m_Size:
     m_Target: 1657.5695
     speed: 2
@@ -1427,8 +1427,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "\uCF58\uC194\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 13
-    y: 1063
+    x: 0
+    y: 752
     width: 1255
     height: 178
   m_SerializedDataModeController:
@@ -1463,8 +1463,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "\uACC4\uCE35 \uAD6C\uC870\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1269
-    y: 335
+    x: 1
+    y: 24
     width: 246
     height: 601
   m_SerializedDataModeController:
@@ -1529,8 +1529,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "\uD504\uB85C\uC81D\uD2B8\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1269
-    y: 962
+    x: 1
+    y: 651
     width: 523
     height: 279
   m_SerializedDataModeController:
@@ -1574,7 +1574,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 561}
     m_SelectedIDs: 06ce0000
     m_LastClickedID: 52742
-    m_ExpandedIDs: 0000000018cb00001acb00001ccb00001ecb000020cb000022cb000024cb000026cb000028cb00002acb000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000001ccb00001ecb000020cb000022cb000024cb000026cb000028cb00002acb00002ccb00002ecb0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1603,7 +1603,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000018cb00001acb00001ccb00001ecb000020cb000022cb000024cb000026cb000028cb00002acb0000
+    m_ExpandedIDs: 000000001ccb00001ecb000020cb000022cb000024cb000026cb000028cb00002acb00002ccb00002ecb0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1682,8 +1682,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "\uC778\uC2A4\uD399\uD130\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1517
-    y: 335
+    x: 249
+    y: 24
     width: 275
     height: 601
   m_SerializedDataModeController:
