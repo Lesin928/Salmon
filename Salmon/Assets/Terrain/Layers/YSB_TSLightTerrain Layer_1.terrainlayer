@@ -7,9 +7,9 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: YSB_TSLightTerrain Layer_1
-  m_DiffuseTexture: {fileID: 2800000, guid: e93355eafa8f830479bf21c271197334, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 30c1099de0b2c1e4d9a97d33df593740, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: 2c2c6309f1194904ebc44ccd8b5e65ed, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: f4514f239b5b9e5468db0f78a722167d, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 7f62d93051689f84484c4df06bbde901, type: 3}
+  m_MaskMapTexture: {fileID: 2800000, guid: 573ccb6b54f6b7c438e2fff73afa57ee, type: 3}
   m_TileSize: {x: 8, y: 8}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 1, g: 1, b: 1, a: 0}
@@ -20,3 +20,4 @@ TerrainLayer:
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_SmoothnessSource: 1
