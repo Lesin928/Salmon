@@ -15,6 +15,8 @@ public class LobbyUIController : MonoBehaviour
         {
             m_ContinueBtn.SetActive(false);
         }
+
+        UIManager.Instance.Fade(Color.black, 1f, 0f, 0.5f, 0f, true);
     }
 
     public void OnClickContinueButton()
