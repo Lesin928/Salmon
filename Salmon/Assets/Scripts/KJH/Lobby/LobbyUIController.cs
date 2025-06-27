@@ -51,13 +51,4 @@ public class LobbyUIController : MonoBehaviour
     {
         GameManager.Instance.Quit();
     }
-
-    // 테스트용
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            GameManager.Instance.Pause();
-        }
-    }
 }

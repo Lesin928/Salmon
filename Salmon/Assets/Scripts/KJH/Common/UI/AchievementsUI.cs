@@ -11,9 +11,6 @@ public class AchievementsUI : UIBase
     [SerializeField] private TextMeshProUGUI CompleteText;
     [SerializeField] private Scrollbar Scrollbar;
 
-    [Tooltip("Key used to open UI menu. Set to \"None\" to prevent menu from opening with any key press")]
-    public KeyCode OpenMenuKey; //Key to open in-game menu
-
     public override void SetInfo(UIBaseData uiData)
     {
         base.SetInfo(uiData);
