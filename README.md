@@ -13,3 +13,13 @@
   
 - **팀원 소개 및 기여(역할)**
 <a href="https://github.com/Lesin928/Salmon/graphs/contributors">
+
+|    팀원    |                      기여                       |
+| :--------: | :---------------------------------------------: |
+| 팀원1 |    none  |
+| 팀원2 | none |
+| 팀원3 |    none  |
+| 팀원4 | none |
+| 팀원5 |    none  |
+
+</p>
