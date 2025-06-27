@@ -12,7 +12,7 @@
 [Bb]uild/
 [Bb]uilds/
 MemoryCaptures/
-Salmon/UserSettings
+Salmon/UserSettings/
 *.stacktrace
 
 # Unity 프로젝트 파일 무시
