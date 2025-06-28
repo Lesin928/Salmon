@@ -55,7 +55,6 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     protected override bool InitInstance()
     {
         Stack = GetComponentInChildren<AchievementStack>();
-        LoadAchievementState();
         return true;
     }
 
