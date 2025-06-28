@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Salmon/Assets/Prefabs/YSB_Prefabs/WaterReflectionCamera(이거는 공용으로써도될거같은데).prefab.meta
+guid: fa7a5d2df48db3641b02cc5ce5d6a98c
+=======
+guid: f0874ebc1569ae24b971dd1ddd895633
+>>>>>>> main:Salmon/Assets/Prefabs/PMK_Prefabs/PMK_WaterReflectionCamera.prefab.meta
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 191449
+  packageName: Simple Water Shader URP
+  packageVersion: 1.0.0
+  assetPath: Assets/IgniteCoders/Simple Water Shader/Prefabs/WaterReflectionCamera.prefab
+  uploadId: 422776
