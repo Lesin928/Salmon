@@ -1856,7 +1856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9207389398687740992, guid: 1d04d3d197570944c85893d8c1b4542e, type: 3}
       propertyPath: m_Name
-      value: PMK_WaterBlock_50m (1) 1
+      value: Lobby_WaterBlock_50m
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
