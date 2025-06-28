@@ -2,13 +2,12 @@ using NUnit.Framework.Constraints;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SoundTrigger_Loop : MonoBehaviour
+public class SoundTrigger_Play : MonoBehaviour
 {
     public GameObject player;
     public AudioManager audioManager;
-    public string audioClipName;
 
-    private bool hasPlayed = false;
+    public string audioClipName;
 
     public void Start()
     {
@@ -23,34 +22,16 @@ public class SoundTrigger_Loop : MonoBehaviour
         }
     }   
 
-
-    
-
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player") && !string.IsNullOrEmpty(audioClipName))
         {
 
             // 사운드가 AudioManager에 존재하는지 확인
-            audioManager.PlayLoop(audioClipName);
-            hasPlayed = true;
+            audioManager.PlayMusic(audioClipName);
             Debug.Log($"[auidoClipName] 재생");
 
         }
     }
 
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.CompareTag("Player") && !string.IsNullOrEmpty(audioClipName))
-        {
-
-            // 사운드가 AudioManager에 존재하는지 확인
-            audioManager.StopSFX(audioClipName);
-            hasPlayed = false;
-            Debug.Log($"[auidoClipName] 재생 종료");
-
-
-        }
-
-    }
 }

@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 978745141}
-  - component: {fileID: 978745140}
+  - component: {fileID: 978745142}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -349,74 +349,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &978745140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978745139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f753ef58d1c28994596aa4a1f07307d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgmSource: {fileID: 0}
-  bgmClips:
-  - name: Title
-    clip: {fileID: 8300000, guid: 6ad07c47ab8f740bc968493850e82921, type: 3}
-    volume: 0.38
-  - name: Game
-    clip: {fileID: 8300000, guid: 3b1ab403a89724cb19f6c70b171b29e3, type: 3}
-    volume: 0
-  uiClips:
-  - name: UI_Button
-    clip: {fileID: 8300000, guid: 0e3ec7146a3ed6e40ac18debb6bb4a02, type: 3}
-    volume: 0
-  objectClips:
-  - name: 
-    clip: {fileID: 8300000, guid: 2061a34fe347de64491606001271938b, type: 3}
-    volume: 0
-  - name: 
-    clip: {fileID: 8300000, guid: 5a72acee55727a64589a23d1d833aa62, type: 3}
-    volume: 0
-  - name: 
-    clip: {fileID: 8300000, guid: 836c273027a1fa347ab0642a5596cd21, type: 3}
-    volume: 0
-  - name: 
-    clip: {fileID: 8300000, guid: 5a97e92adbc41f44ab231640a9943b54, type: 3}
-    volume: 0
-  playerClips:
-  - name: Salmon_Ground
-    clip: {fileID: 8300000, guid: 2dc078ef36e81b44fbb0a45735441ef3, type: 3}
-    volume: 0
-  - name: Salmon_IN
-    clip: {fileID: 8300000, guid: be59c3a06823bfb4088d53ad909cd288, type: 3}
-    volume: 0
-  - name: Salmon_Out
-    clip: {fileID: 8300000, guid: 6448160daac24be4abc3c22231058a24, type: 3}
-    volume: 0
-  - name: Salmon_Stun
-    clip: {fileID: 8300000, guid: 5c74d8fa8d593d9418e6cac7c872f31e, type: 3}
-    volume: 0
-  - name: Salmon_Swim
-    clip: {fileID: 8300000, guid: ca5587dcbb0a8e349a9a60601c1cd0fc, type: 3}
-    volume: 0
-  bearClips:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-  - name: Bear_Move
-    clip: {fileID: 8300000, guid: 85d25e225156a204a83135a2015f6f8b, type: 3}
-    volume: 0
-  voiceClips:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-  masterVolume: 0
 --- !u!4 &978745141
 Transform:
   m_ObjectHideFlags: 0
@@ -432,6 +364,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &978745142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978745139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1228ce6bf080bdb4d94649e7550fa11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmClips: []
+  uiClips:
+  - name: ProgessSound
+    clip: {fileID: 8300000, guid: 9492b32862561624aa75d621f48074c5, type: 3}
+    volume: 1
+  - name: UnlockSound
+    clip: {fileID: 8300000, guid: 3400fb2a60564af4db6cc1c28c188006, type: 3}
+    volume: 1
+  playerClips: []
+  bearClips: []
+  voiceClips: []
+  MusicTrs: {fileID: 0}
+  SFXTrs: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

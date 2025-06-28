@@ -7,7 +7,7 @@ public class SoundTrigger_Voice : MonoBehaviour
     public GameObject player;
     public AudioManager audioManager;
 
-    public string audioClipName;
+    public string audioListName;
 
 
     public void Start()
@@ -27,7 +27,7 @@ public class SoundTrigger_Voice : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            audioManager.RandomPlay(audioClipName);
+            audioManager.RandomPlaySFX(audioListName);
             Debug.Log($"[auidoClipName] Àç»ý");
 
         }
