@@ -11,41 +11,86 @@ public class SalmonObject : MonoBehaviour
     protected SalmonStateMachine stateMachine;
     protected SalmonAnimation playerAnimation;
     protected SalmonObject playerObject;
-    protected Rigidbody rb;
+    public Rigidbody rb;
     #endregion
 
     #region Salmon Info    
     [Header("속도 관련")]
-    public float acceleration = 1f;
-    public float maxSpeed = 5f;
-    public float brakeDeceleration = 2f;
-    public float waterResistance = 0.5f;
-    public float driftBackSpeed = -0.5f;
+    public float accelerationBase = 2f; // a in y = a^x
+    public float decelerationBase = 1f; // a in y = a^-x 
+    public float currentSpeed = 0f;
+    public float maxSpeed = 7f;
+    public float minSpeed = 0.1f; // 브레이크 후 최소 속도
+    public Vector3 waterCurrent = Vector3.zero; // 외부 물살 방향
 
-    [Header("회전 관련")]
-    public float turnSpeed = 90f; // 도/초 단위
-    public float turnSmoothness = 5f;
+    [Header("회전 관련")]  
+    public float rotationAcceleration = 90f; // 회전 가속도
+    public float maxAngularSpeed = 180f; // 최대 회전 속도 
+    public float rotationDamping = 180f; //회전 감속도
 
-    private float currentSpeed = 0f;
-    private float targetYaw = 0f;
-     
+
+    [Header("시간 관련")]
+    public float speedTime = 0f; //가속 시간
+    public float brakeTime = 0f; //감속 시간
+    public float angularVelocity = 0f; 
+    
+    [Header("조작 체크")]
     private Vector2 moveInput = Vector2.zero;
+    public bool isAccelerating = false;
+    public bool isBraking = false;
+    public bool isTurningRight = false;
+    public bool isTurningLeft = false;
+    public int turnDirection = 0; // -1: 좌, 1: 우 
+    #endregion 
 
-    private bool isAccelerating = false;
-    private bool isBraking = false;
-    private Vector3 swimDirection = Vector3.forward;
+    #region Collision Info  
+    [Header("콜라이더 체크")]
+    [SerializeField] public Transform groundCheck;
+    [SerializeField] public Transform waterCheck;
+    [SerializeField] public Transform obstructionCheck;
+    [SerializeField] protected LayerMask whatIsGround;
+    [SerializeField] protected LayerMask whatIsWater;
+    [SerializeField] protected LayerMask whatIsObstruction;
+    [SerializeField] public float groundCheckDistance = 4;
+    [SerializeField] public float waterCheckDistance = 4;
+    [SerializeField] public float obstructionCheckDistance = 4;
+
 
     #endregion
+    public virtual bool IsGroundDetected() =>
+    Physics.Raycast(groundCheck.position, Vector3.down, groundCheckDistance, whatIsGround);
+    public virtual bool IsWaterDetected() =>
+    Physics.Raycast(waterCheck.position, Vector3.down, waterCheckDistance, whatIsWater);
 
-    #region Setters and Getters
-    public virtual float TargetYaw
+    public virtual bool IsobstructionDetected() =>
+    Physics.Raycast(obstructionCheck.position, Vector3.forward, obstructionCheckDistance, whatIsObstruction);
+
+
+
+
+    #region Setters and Getters 
+    public virtual bool IsTurningRight
     {
-        get => targetYaw;
+        get => isTurningRight;
         set
         {
-            targetYaw = value;
-            // 회전 시 방향 벡터 갱신
-            swimDirection = Quaternion.Euler(0f, targetYaw, 0f) * Vector3.forward;
+            isTurningRight = value;
+            if (isTurningRight)
+            {
+                isTurningLeft = false; // 오른쪽 회전 중이면 왼쪽 회전 해제
+            }
+        }
+    }
+    public virtual bool IsTurningLeft
+    {
+        get => isTurningLeft;
+        set
+        {
+            isTurningLeft = value;
+            if (isTurningLeft)
+            {
+                isTurningRight = false; // 왼쪽 회전 중이면 오른쪽 회전 해제
+            }
         }
     }   
     public virtual bool IsAccelerating
@@ -91,49 +136,70 @@ public class SalmonObject : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;             // 중력 제거 (수영이므로)
-        rb.linearDamping = 0f;             // 물리 마찰 직접 계산할 예정 
-        targetYaw = transform.eulerAngles.y;
-    }
-
-
-    void Update()
-    {
-
-        // A/D 입력에 따라 목표 Y 회전값 갱신
-        targetYaw += moveInput.x * turnSpeed * Time.deltaTime;
-
-        // 현재 방향에서 목표 방향으로 부드럽게 회전
-        Quaternion currentRotation = transform.rotation;
-        Quaternion targetRotation = Quaternion.Euler(0f, targetYaw, 0f);
-        transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, turnSpeed * Time.deltaTime);
+        rb = GetComponent<Rigidbody>(); 
     } 
-    void FixedUpdate()
-    {
-        if (isAccelerating)
+    void FixedUpdate()  //임시 작동
+    { 
+        // 점프/중력 처리: 일정 거리 아래에 수면이 없으면 중력 적용
+        
+        if (isBraking)
         {
-            currentSpeed += acceleration * Time.fixedDeltaTime;
+            speedTime = 0f;
+            brakeTime += Time.fixedDeltaTime;
+            float decel = Mathf.Pow(decelerationBase, brakeTime) * currentSpeed;
+            currentSpeed = Mathf.Max(decel, minSpeed);
+        }
+        else if (isAccelerating)
+        {
+            brakeTime = 0f;
+            speedTime += Time.fixedDeltaTime;
+            currentSpeed = Mathf.Pow(accelerationBase, speedTime);
             currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
         }
-        else if (isBraking)
+        else
+        { 
+            speedTime = 0f;
+            brakeTime = 0f;
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, Time.fixedDeltaTime);
+        }
+
+        //최종 속도는 현재 벡터와 물살 벡터의 합 (레거시)
+        //rb.linearVelocity = transform.forward * currentSpeed + waterCurrent;
+        Vector3 flatVelocity = transform.forward * currentSpeed + waterCurrent;
+        rb.linearVelocity = new Vector3(flatVelocity.x, rb.linearVelocity.y, flatVelocity.z);
+
+ 
+        if (isTurningRight) turnDirection = 1;  
+        else if (isTurningLeft) turnDirection = -1;  
+        else turnDirection = 0;  
+
+        if (currentSpeed > 0.1f && turnDirection != 0)
         {
-            currentSpeed -= brakeDeceleration * Time.fixedDeltaTime;
-            currentSpeed = Mathf.Max(currentSpeed, 0f);
+            angularVelocity += turnDirection * rotationAcceleration * Time.fixedDeltaTime;
+            angularVelocity = Mathf.Clamp(angularVelocity, -maxAngularSpeed, maxAngularSpeed);
         }
         else
-        {/*
-            currentSpeed -= waterResistance * Time.fixedDeltaTime;
-
-            if (currentSpeed <= 0f)
-            {
-                currentSpeed = Mathf.Lerp(currentSpeed, driftBackSpeed, Time.fixedDeltaTime);
-            }*/
+        {
+            angularVelocity = Mathf.MoveTowards(angularVelocity, 0f, rotationDamping * Time.fixedDeltaTime);
         }
 
-        // 최종 속도 적용 (항상 바라보는 방향 기준)
-        Vector3 velocity = transform.forward * currentSpeed;
-        rb.linearVelocity = velocity;
+
+        //최종 회전 적용
+        transform.Rotate(Vector3.up, angularVelocity * Time.fixedDeltaTime); 
     }
 
+    /// <summary>  
+    /// 물살을 적용하는 메서드
+    /// </summary>  
+    public void ApplyWaterCurrent(Vector3 current)
+    {
+        waterCurrent = current; 
+    }
+     
+
+    //점프 구현
+    //회전 개선
+    //스턴 구현
+
+    // 부력 : 수면이 닿아있으면, 부력에 뜨는 것처럼 점차 평행한 각도로 세워지면서 높이가 상승.
 }

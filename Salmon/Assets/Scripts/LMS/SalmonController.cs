@@ -19,7 +19,7 @@ public class SalmonController : MonoBehaviour
         salmonObject = GetComponent<SalmonObject>();
     }
 
-    private void FixedUpdate() //나중에 무브 스테이트로 이동
+    private void FixedUpdate()
     { 
     }
     private void Update()
@@ -27,29 +27,35 @@ public class SalmonController : MonoBehaviour
     }
 
     /// <summary>
-    /// 키보드 좌우 방향키 입력을 처리하는 메서드
+    /// 키보드 방향키 입력을 처리하는 메서드
     /// </summary>
     public void OnMove(InputAction.CallbackContext context)
-    { 
+    {        
         salmonObject.MoveInput = context.ReadValue<Vector2>();
-
-        salmonObject.IsAccelerating = salmonObject.MoveInput.y > 0.1f;
-        salmonObject.IsBraking = salmonObject.MoveInput.y < -0.1f;
-
-    }
-
-    /// <summary>
-    /// 키보드 C 입력을 처리하는 메서드
-    /// </summary>
-    public void OnJump(InputAction.CallbackContext context)
-    { 
+                
+        salmonObject.IsAccelerating = salmonObject.MoveInput.y > 0.1f; //전진 
+        salmonObject.IsBraking = salmonObject.MoveInput.y < -0.1f;     //브레이크 
+        salmonObject.IsTurningRight = salmonObject.MoveInput.x > 0.1f; //오른쪽 회전 
+        salmonObject.IsTurningLeft = salmonObject.MoveInput.x < -0.1f; //왼쪽 회전  
     }
 
     /// <summary>
     /// 키보드 Space 입력을 처리하는 메서드
     /// </summary>
-    public void OnDash(InputAction.CallbackContext context)
-    { 
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        { 
+            Jump();
+        }
+
     }
-     
+
+    public float jumpForce = 8f;  // 세게 튀는 힘
+
+    private void Jump()
+    {
+        salmonObject.rb.AddForce(Vector3.up * jumpForce + salmonObject.rb.linearVelocity , ForceMode.Impulse);
+    }
+
 }

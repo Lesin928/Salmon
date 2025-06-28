@@ -6,10 +6,12 @@ using UnityEngine;
 public class SalmonGizmos : MonoBehaviour
 { 
     private Rigidbody rb;
+    private SalmonObject salmonObject;  
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        salmonObject = GetComponent<SalmonObject>();
     }
 
     void OnDrawGizmos()
@@ -33,7 +35,23 @@ public class SalmonGizmos : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawLine(start2, start2 + rb.linearVelocity.normalized * 2f);
             Gizmos.DrawSphere(start2 + rb.linearVelocity.normalized * 2f, 0.1f);
-        }
+        }  
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (salmonObject.groundCheck == null) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(salmonObject.groundCheck.position, salmonObject.groundCheck.position + Vector3.down * salmonObject.groundCheckDistance);
+
+        if (salmonObject.waterCheck == null) return;
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(salmonObject.waterCheck.position, salmonObject.waterCheck.position + Vector3.down * salmonObject.waterCheckDistance);
+
+
+
     }
 
 
