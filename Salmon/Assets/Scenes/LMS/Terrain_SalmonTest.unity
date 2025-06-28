@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &1105261938 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5359678089900117249, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-  m_PrefabInstance: {fileID: 4045354925088486719}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1655095170
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,16 +415,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!4 &1862785031 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5392093936382933603, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-  m_PrefabInstance: {fileID: 4045354925088486719}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2058710489 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7389405750350590068, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-  m_PrefabInstance: {fileID: 4045354925088486719}
-  m_PrefabAsset: {fileID: 0}
 --- !u!154 &146715082498373021
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -1002,50 +987,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Salmon_Set
       objectReference: {fileID: 0}
-    - target: {fileID: 4765638654702686681, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.71799994
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: waterCheck
-      value: 
-      objectReference: {fileID: 2058710489}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: groundCheck
-      value: 
-      objectReference: {fileID: 1105261938}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: obstructionCheck
-      value: 
-      objectReference: {fileID: 1862785031}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: waterCheckDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: whatIsWater.m_Bits
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: groundCheckDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: obstructionCheckDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7311730262564593139, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.968
-      objectReference: {fileID: 0}
     - target: {fileID: 8277008149062152803, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4045354925088486725}
-    - target: {fileID: 8277008149062152803, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnJump
-      objectReference: {fileID: 0}
     - target: {fileID: 9098346351952755831, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 43.55015
