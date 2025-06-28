@@ -20,8 +20,9 @@ public class AudioTrigger_Play : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-    }   
+    }
 
+    //<summary> 접촉시 오디오 재생 </summary>
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player") && !string.IsNullOrEmpty(audioClipName))

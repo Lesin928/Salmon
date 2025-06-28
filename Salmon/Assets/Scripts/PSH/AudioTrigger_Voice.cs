@@ -23,9 +23,10 @@ public class AudioTrigger_Voice : MonoBehaviour
         }
     }
 
+    //<summary> 접촉시 해당 SFX재생 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !string.IsNullOrEmpty(audioListName))
         {
             audioManager.RandomPlaySFX(audioListName);
             Debug.Log($"[auidoClipName] 재생");

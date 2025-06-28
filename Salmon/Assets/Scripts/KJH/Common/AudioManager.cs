@@ -7,6 +7,19 @@ using static Unity.VisualScripting.Member;
 
 public class AudioManager : SingletonComponent<AudioManager>
 {
+    public enum SFX { UI, Player, Bear, Voice }
+    public enum Music { BGM }
+
+    [System.Serializable]
+    public class AudioClipData
+    {
+        public string name;
+        public AudioClip clip;
+        [Range(0f, 1f)] public float volume = 1f;
+    }
+
+    public Transform MusicTrs;
+    public Transform SFXTrs;
 
     [SerializeField, Header("BGM Clips")]
     private List<AudioClipData> bgmClips;
@@ -21,22 +34,7 @@ public class AudioManager : SingletonComponent<AudioManager>
     private List<AudioClipData> bearClips;
 
     [SerializeField, Header("Voice Clips")]
-    public List<AudioClipData> voiceClips;
-
-    public enum SFX { UI, Player, Bear, Voice}
-    public enum Music {BGM}
-
-
-    [System.Serializable]
-    public class AudioClipData
-    {
-        public string name;
-        public AudioClip clip;
-        [Range(0f, 1f)] public float volume = 1f;
-    }
-
-    public Transform MusicTrs;
-    public Transform SFXTrs;
+    private List<AudioClipData> voiceClips;
 
     private Dictionary<Music, AudioSource> m_MusicPlayer = new Dictionary<Music, AudioSource>();
     private AudioSource m_CurrBGMSource;
