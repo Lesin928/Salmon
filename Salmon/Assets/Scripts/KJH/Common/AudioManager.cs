@@ -1,4 +1,5 @@
 using Singleton.Component;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -41,6 +42,7 @@ public class AudioManager : SingletonComponent<AudioManager>
 
     private Dictionary<SFX, AudioSource> m_SFXPlayer = new Dictionary<SFX, AudioSource>();
 
+    private Dictionary<string, AudioSource> activeSFX = new();
 
     #region Singleton
     protected override void AwakeInstance()
@@ -82,12 +84,12 @@ public class AudioManager : SingletonComponent<AudioManager>
             return;
         }
 
-        if (m_CurrBGMSource != null)
+        if (m_CurrBGMSource != null && m_CurrBGMSource.clip.name != "thinking" && m_CurrBGMSource.clip.name != "slient_viliage")
         {
             m_CurrBGMSource.Stop();
             Destroy(m_CurrBGMSource.gameObject);
         }
-
+        
         var newGO = new GameObject($"Music {musicName}");
         AudioSource newAudioSource = newGO.AddComponent<AudioSource>();
         newAudioSource.clip = clipData.clip;
@@ -108,13 +110,34 @@ public class AudioManager : SingletonComponent<AudioManager>
 
     public void PlaySFX(string sfxName)
     {
+        if (activeSFX.TryGetValue(sfxName, out var existingSource))
+        {
+            if (existingSource != null && existingSource.isPlaying)
+            {
+                Debug.Log($"[AudioManager] '{sfxName}' is already playing. Destroying new instance.");
 
-        var clipData = playerClips.Find(c => c.name == sfxName) 
+                // 클립 검색만 하고 재생하지 않음
+                var clipData = playerClips.Find(c => c.name == sfxName)
+                    ?? bearClips.Find(c => c.name == sfxName)
+                    ?? voiceClips.Find(c => c.name == sfxName)
+                    ?? uiClips.Find(c => c.name == sfxName);
+
+                if (clipData == null) return;
+
+                var dummy = new GameObject($"Duplicate_{sfxName}");
+                dummy.transform.parent = SFXTrs;
+                Destroy(dummy); // 새 인스턴트 즉시 제거
+                return;
+            }
+        }
+
+
+        var clipData2 = playerClips.Find(c => c.name == sfxName) 
             ?? bearClips.Find(c => c.name == sfxName) 
             ?? voiceClips.Find(c => c.name == sfxName)
             ?? uiClips.Find(c => c.name == sfxName);
 
-        if (clipData == null)
+        if (clipData2 == null)
         {
             Debug.LogError($"Music clip '{sfxName}' not found.");
             return;
@@ -122,14 +145,29 @@ public class AudioManager : SingletonComponent<AudioManager>
 
         var newGO = new GameObject(sfxName);
         AudioSource newAudioSource = newGO.AddComponent<AudioSource>();
-        newAudioSource.clip = clipData.clip;
-        newAudioSource.volume = clipData.volume;
+        newAudioSource.clip = clipData2.clip;
+        newAudioSource.volume = clipData2.volume;
         newAudioSource.loop = false;
         newAudioSource.playOnAwake = false;
         newGO.transform.parent = SFXTrs;
 
         newAudioSource.Play();
-        GameObject.Destroy(newGO, clipData.clip.length);
+        activeSFX[sfxName] = newAudioSource;
+
+        StartCoroutine(CleanupSFXAfterPlay(sfxName, newGO, clipData2.clip.length));
+    }
+
+    public void StopSFX(string sfxName)
+    {
+        if (activeSFX.TryGetValue(sfxName, out var source))
+        {
+            if (source != null)
+            {
+                source.Stop();
+                Destroy(source.gameObject);
+            }
+            activeSFX.Remove(sfxName);
+        }
     }
 
     public void OnLoadUserData()
@@ -252,5 +290,17 @@ public class AudioManager : SingletonComponent<AudioManager>
     private float CalculateFinalVolume(float clipVolume, float userVolume)
     {
         return Mathf.Clamp01(clipVolume * userVolume);
+    }
+
+    private IEnumerator CleanupSFXAfterPlay(string sfxName, GameObject sfxGO, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (activeSFX.ContainsKey(sfxName) && activeSFX[sfxName] == sfxGO.GetComponent<AudioSource>())
+        {
+            activeSFX.Remove(sfxName);
+        }
+
+        Destroy(sfxGO);
     }
 }

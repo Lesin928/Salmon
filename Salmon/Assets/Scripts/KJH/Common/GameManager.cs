@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class GameManager : SingletonComponent<GameManager>
 {
+    public bool IsPaused { get; private set; }
+
     public float PlayTime { get; set; }
     public Vector3 PlayerPosition { get; set; }
     public float NewRecord { get; set; }
+    public float TotalPlayTime { get; set; }
 
     #region Singleton
     protected override void AwakeInstance()
@@ -15,6 +18,7 @@ public class GameManager : SingletonComponent<GameManager>
 
     protected override bool InitInstance()
     {
+        IsPaused = false;
         return true;
     }
 
@@ -38,6 +42,7 @@ public class GameManager : SingletonComponent<GameManager>
             PlayTime = userPlayData.PlayTime;
             PlayerPosition = userPlayData.PlayerPosition;
             NewRecord = userPlayData.NewRecord;
+            TotalPlayTime = userPlayData.TotalPlayTime;
         }
     }
 
@@ -49,6 +54,7 @@ public class GameManager : SingletonComponent<GameManager>
             userPlayData.PlayTime = PlayTime;
             userPlayData.PlayerPosition = PlayerPosition;
             userPlayData.NewRecord = NewRecord;
+            userPlayData.TotalPlayTime = TotalPlayTime;
             userPlayData.SaveData();
         }
     }
@@ -63,14 +69,22 @@ public class GameManager : SingletonComponent<GameManager>
         }
     }
 
-    public void Quit()
+    public void QuitGame()
     {
         Application.Quit();
     }
 
-    public void Pause()
+    public void PauseGame(bool _pause)
     {
-        var uiData = new UIBaseData();
-        UIManager.Instance.OpenUI<PauseUI>(uiData);
+        IsPaused = _pause;
+
+        if (IsPaused)
+        {
+            Time.timeScale = 0f; // 게임 시간 정지
+        }
+        else
+        {
+            Time.timeScale = 1f; // 게임 시간 재개
+        }
     }
 }
