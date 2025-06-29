@@ -71,8 +71,6 @@ public class UserAchievementData : IUserData
             ProgressSuffix = x.Suffix
         }).ToList();
 
-        Debug.Log($"AchievementList Count: {AchievementList.Count}");
-
         States.Clear();
         for (int i = 0; i < AchievementList.Count; i++)
         {
