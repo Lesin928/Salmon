@@ -21,6 +21,7 @@ public class UserDataManager : SingletonComponent<UserDataManager>
     {     
         UserDataList.Add(new UserSettingsData());
         UserDataList.Add(new UserAchievementData());
+        UserDataList.Add(new UserPlayData());
         return true;
     }
 

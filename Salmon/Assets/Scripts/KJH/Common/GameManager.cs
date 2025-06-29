@@ -51,6 +51,7 @@ public class GameManager : SingletonComponent<GameManager>
         var userPlayData = UserDataManager.Instance.GetUserData<UserPlayData>();
         if (userPlayData != null)
         {
+            userPlayData.ExistsSavedPlayData = true;
             userPlayData.PlayTime = PlayTime;
             userPlayData.PlayerPosition = PlayerPosition;
             userPlayData.NewRecord = NewRecord;
