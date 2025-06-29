@@ -119,17 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &931975375 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3821390562291523244, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-  m_PrefabInstance: {fileID: 494423505165882122}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &12083077134012224
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,101 +194,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1190365583836102305, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: Orbits.Top.Height
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1190365583836102305, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: Orbits.Top.Radius
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1190365583836102305, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: Orbits.Bottom.Height
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1190365583836102305, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: Orbits.Center.Height
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1832108073740166464, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_Size.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1832108073740166464, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_Size.y
-      value: 0.234074
-      objectReference: {fileID: 0}
-    - target: {fileID: 1832108073740166464, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3821390562291523244, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: Lens.FieldOfView
-      value: 60
-      objectReference: {fileID: 0}
     - target: {fileID: 3942243943682476850, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
       propertyPath: m_Name
       value: Salmon_Set
       objectReference: {fileID: 0}
-    - target: {fileID: 4765638654702686681, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 11.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765638654702686681, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.98855454
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765638654702686681, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+    - target: {fileID: 8991913829607878837, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1508642
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4765638654702686681, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.0000000034774346
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765638654702686681, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+    - target: {fileID: 8991913829607878837, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.3069393e-10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5359678089900117249, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: freeLookCamera
-      value: 
-      objectReference: {fileID: 931975375}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: waterCheckDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: groundCheckDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: whatIsGround.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: obstructionCheckDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6088011308468608801, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_Name
-      value: Slamon
-      objectReference: {fileID: 0}
-    - target: {fileID: 7311730262564593139, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 9.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 7389405750350590068, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8198626450207343235, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_Name
-      value: SalmonAnim
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9098346351952755831, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
       propertyPath: m_LocalPosition.x

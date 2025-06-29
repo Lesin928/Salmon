@@ -56,16 +56,16 @@ public class SalmonController : MonoBehaviour
         if (context.phase != InputActionPhase.Performed) return;
         if (!salmonObject.IsWaterDetected()) return;
 
-        // 이동 방향을 기준으로 회전 적용
-        Vector3 flatMoveDir = transform.forward * salmonObject.CurrentSpeed + salmonObject.WaterCurrent;
-        flatMoveDir.y = 0;
-        if (flatMoveDir.sqrMagnitude > 0.1f)
-        {
-            Quaternion jumpRot = Quaternion.LookRotation(flatMoveDir.normalized);
-            transform.rotation = jumpRot;
-        }
-
         // 점프 힘 적용
         salmonObject.TakePush(Vector3.up, salmonObject.JumpForce);
+
+        // 이동 방향을 기준으로 회전 적용 (rb의 수평 속도 기준)
+        Vector3 moveDirection = salmonObject.rb.linearVelocity;
+        moveDirection.y = 0f;
+        if (moveDirection.sqrMagnitude > 0.1f)
+        {
+            Quaternion jumpRot = Quaternion.LookRotation(moveDirection.normalized);
+            transform.rotation = Quaternion.Euler(jumpRot.eulerAngles.x, jumpRot.eulerAngles.y, 0f);
+        } 
     }
 }

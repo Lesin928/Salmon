@@ -50,7 +50,6 @@ public class SalmonObject : MonoBehaviour
     [SerializeField] private bool isChangingDirection = false;
     #endregion
 
-
     #region Collision Info  
     [Header("콜라이더 체크")]
     [SerializeField] public Transform groundCheck;
@@ -141,6 +140,18 @@ public class SalmonObject : MonoBehaviour
     } 
     void FixedUpdate()
     {
+        // 점프 후 공중에서 이동 방향으로 X축 회전 적용
+        if (!IsWaterDetected())
+        {
+            Debug.Log("공중에 있습니다.");
+            Vector3 horizontalVelocity = rb.linearVelocity;
+            horizontalVelocity.y = 0f;
+            if (horizontalVelocity.sqrMagnitude > 0.1f)
+            {
+                Quaternion airRot = Quaternion.LookRotation(horizontalVelocity.normalized);
+                transform.rotation = Quaternion.Euler(airRot.eulerAngles.x, transform.rotation.eulerAngles.y, 0f);
+            }
+        }
         // 시네머신 카메라 기준 이동 방향 계산
         if (moveInput != Vector2.zero && freeLookCamera != null)
         {
@@ -161,7 +172,7 @@ public class SalmonObject : MonoBehaviour
             {
                 float targetAngle = Mathf.Atan2(desiredDirection.x, desiredDirection.z) * Mathf.Rad2Deg;
                 float smoothedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, rotationSmoothTime);
-                transform.rotation = Quaternion.Euler(0f, smoothedAngle, 0f);
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, smoothedAngle, 0f);
             }
         }
 
@@ -190,8 +201,8 @@ public class SalmonObject : MonoBehaviour
 
         Vector3 flatVelocity = transform.forward * currentSpeed + waterCurrent;
         rb.linearVelocity = new Vector3(flatVelocity.x, rb.linearVelocity.y, flatVelocity.z);
-
-        MaintainUprightRotation(); // 수평 회복 적용
+        // 수평 회복 적용
+        //MaintainUprightRotation(); 
     }
 
     /// <summary>  
