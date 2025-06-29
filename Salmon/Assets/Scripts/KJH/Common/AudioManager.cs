@@ -68,8 +68,7 @@ public class AudioManager : SingletonComponent<AudioManager>
     public void PlayMusic(string musicName)
     {
 
-        var clipData = bgmClips.Find(c => c.name == musicName)
-            ?? uiClips.Find(c => c.name == musicName);
+        var clipData = bgmClips.Find(c => c.name == musicName);
 
         if (clipData == null)
         {
