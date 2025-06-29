@@ -48,6 +48,7 @@ public class SalmonObject : MonoBehaviour
     [SerializeField] private Vector2 moveInput = Vector2.zero;
     [SerializeField] private int turnDirection = 0; // -1: 좌, 1: 우 
     [SerializeField] private bool isChangingDirection = false;
+    [SerializeField] private bool wasInWater = false;
     #endregion
 
     #region Collision Info  
@@ -143,7 +144,11 @@ public class SalmonObject : MonoBehaviour
         // 점프 후 공중에서 이동 방향으로 X축 회전 적용
         if (!IsWaterDetected())
         {
-            Debug.Log("공중에 있습니다.");
+            if(wasInWater)
+            {
+                Debug.Log("공중에 있습니다.");
+                wasInWater = false; // 상태 갱신
+            }
             Vector3 horizontalVelocity = rb.linearVelocity;
             horizontalVelocity.y = 0f;
             if (horizontalVelocity.sqrMagnitude > 0.1f)
@@ -152,6 +157,16 @@ public class SalmonObject : MonoBehaviour
                 transform.rotation = Quaternion.Euler(airRot.eulerAngles.x, transform.rotation.eulerAngles.y, 0f);
             }
         }
+        else
+        {
+            // 이전 프레임까지 공중에 있다가 물에 들어간 순간
+            if (!wasInWater)
+            {
+                AudioManager.Instance.PlaySFX("Salmon_Arrive"); // 원하는 오디오 재생
+                wasInWater = true;
+            }
+        }
+
         // 시네머신 카메라 기준 이동 방향 계산
         if (moveInput != Vector2.zero && freeLookCamera != null)
         {

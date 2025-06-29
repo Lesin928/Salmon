@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 4681339121756389259}
   m_Layer: 0
   m_Name: Slamon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -573,6 +573,7 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   turnDirection: 0
   isChangingDirection: 0
+  wasInWater: 0
   groundCheck: {fileID: 5359678089900117249}
   waterCheck: {fileID: 7389405750350590068}
   obstructionCheck: {fileID: 5392093936382933603}
