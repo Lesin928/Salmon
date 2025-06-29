@@ -46,10 +46,11 @@ public class TitleManager : MonoBehaviour
             UserDataManager.Instance.SaveUserData();
         }
 
-        // 오디오 매니저에 유저 데이터 로드 알림
-        AudioManager.Instance.OnLoadUserData();
+        AudioManager.Instance.OnLoadUserData(); // 오디오 매니저에 유저 데이터 로드
 
         AchievementManager.Instance.LoadAchievementState(); // 업적 데이터 로드
+
+        GameManager.Instance.LoadPlayData(); // 게임 매니저를 통한 플레이 데이터 로드
 
         // 게임 로딩 코루틴 시작
         StartCoroutine(LoadGameCo());

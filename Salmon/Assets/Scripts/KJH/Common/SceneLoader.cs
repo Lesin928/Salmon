@@ -7,7 +7,7 @@ public enum SceneType
 {
     Title,
     Lobby,
-    InGame,
+    MainScene,
 }
 
 public class SceneLoader : SingletonComponent<SceneLoader>
