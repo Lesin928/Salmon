@@ -49,11 +49,5 @@ public class SalmonGizmos : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(salmonObject.waterCheck.position, salmonObject.waterCheck.position + Vector3.down * salmonObject.waterCheckDistance);
-
-
-
     }
-
-
-
 }

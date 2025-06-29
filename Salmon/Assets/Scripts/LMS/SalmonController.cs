@@ -30,13 +30,20 @@ public class SalmonController : MonoBehaviour
     /// 키보드 방향키 입력을 처리하는 메서드
     /// </summary>
     public void OnMove(InputAction.CallbackContext context)
-    {        
+    {
+        if (salmonObject.IsWaterDetected() == false) return;
+        Vector2 input = context.ReadValue<Vector2>();
+        salmonObject.MoveInput = input; 
+
+        /*
+        //레거시 코드: SalmonObject의 MoveInput을 설정하는 부분
         salmonObject.MoveInput = context.ReadValue<Vector2>();
                 
         salmonObject.IsAccelerating = salmonObject.MoveInput.y > 0.1f; //전진 
         salmonObject.IsBraking = salmonObject.MoveInput.y < -0.1f;     //브레이크 
         salmonObject.IsTurningRight = salmonObject.MoveInput.x > 0.1f; //오른쪽 회전 
-        salmonObject.IsTurningLeft = salmonObject.MoveInput.x < -0.1f; //왼쪽 회전  
+        salmonObject.IsTurningLeft = salmonObject.MoveInput.x < -0.1f; //왼쪽 회전 
+        */
     }
 
     /// <summary>
@@ -44,18 +51,9 @@ public class SalmonController : MonoBehaviour
     /// </summary>
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        { 
-            Jump();
-        }
-
-    }
-
-    public float jumpForce = 8f;  // 세게 튀는 힘
-
-    private void Jump()
-    {
-        salmonObject.rb.AddForce(Vector3.up * jumpForce + salmonObject.rb.linearVelocity , ForceMode.Impulse);
-    }
-
+        if (context.phase != InputActionPhase.Performed) return;
+        Debug.Log(salmonObject.IsWaterDetected());
+        if (salmonObject.IsWaterDetected() == false) return;
+        salmonObject.TakePush(Vector3.up, salmonObject.JumpForce); // 연어를 위로 튕겨내기
+    } 
 }
