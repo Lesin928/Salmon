@@ -3,16 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class PauseUI : UIBase
 {
-    public override void Init(Transform anchor)
-    {
-        base.Init(anchor);
-        Time.timeScale = 0f; // 게임 시간 정지
-    }
-
     public override void OnClickCloseButton()
     {
-        Time.timeScale = 1f; // 게임 시간 재개
         base.OnClickCloseButton();
+        GameManager.Instance.PauseGame(false); // 게임 시간 재개
     }
 
     public void OnClickSettingsButton()
@@ -30,13 +24,22 @@ public class PauseUI : UIBase
     public void OnClickReturnToLobbyButton()
     {
         GameManager.Instance.SavePlayData(); // 플레이 데이터 저장
-        SceneLoader.Instance.LoadScene(SceneType.Lobby); // 로비 씬으로 이동
-        OnClickCloseButton(); // UI 닫기
+        GameManager.Instance.PauseGame(false); // 게임 시간 재개
+        UIManager.Instance.CloseAllOpenUI(); // 모든 UI 닫기
+        UIManager.Instance.Fade(Color.black, 0f, 1f, 0.5f, 0f, false, () =>
+        {
+            SceneLoader.Instance.LoadScene(SceneType.Lobby); // 로비 씬으로 이동
+        });
     }
 
     public void OnClickQuitButton()
     {
         GameManager.Instance.SavePlayData(); // 플레이 데이터 저장
-        GameManager.Instance.Quit();
+        GameManager.Instance.PauseGame(false); // 게임 시간 재개
+        UIManager.Instance.CloseAllOpenUI(); // 모든 UI 닫기
+        UIManager.Instance.Fade(Color.black, 0f, 1f, 0.5f, 0f, false, () =>
+        {
+            GameManager.Instance.QuitGame();
+        });
     }
 }
