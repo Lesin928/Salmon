@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1228ce6bf080bdb4d94649e7550fa11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MusicTrs: {fileID: 0}
+  SFXTrs: {fileID: 0}
   bgmClips:
   - name: main
     clip: {fileID: 8300000, guid: 3b1ab403a89724cb19f6c70b171b29e3, type: 3}
@@ -139,5 +141,3 @@ MonoBehaviour:
   - name: 15
     clip: {fileID: 8300000, guid: 7afd6f75adb8aec4597560e9ae74318a, type: 3}
     volume: 0.7
-  MusicTrs: {fileID: 0}
-  SFXTrs: {fileID: 0}
