@@ -55,7 +55,6 @@ public class AchievementManager : SingletonComponent<AchievementManager>
     protected override bool InitInstance()
     {
         Stack = GetComponentInChildren<AchievementStack>();
-        LoadAchievementState();
         return true;
     }
 
@@ -286,7 +285,7 @@ public class AchievementManager : SingletonComponent<AchievementManager>
                     //When it finds the largest valid notification point
                     if (States[Index].Progress >= AchievementList[Index].NotificationFrequency * i)
                     {
-                        AudioManager.Instance.PlaySFX(SFX.ProgressSound);
+                        AudioManager.Instance.PlaySFX("ProgressSound");
                         States[Index].LastProgressUpdate = i;
                         Stack.ScheduleAchievementDisplay(Index);
                         return;
@@ -295,7 +294,7 @@ public class AchievementManager : SingletonComponent<AchievementManager>
             }
             else
             {
-                AudioManager.Instance.PlaySFX(SFX.UnlockSound);
+                AudioManager.Instance.PlaySFX("UnlockSound");
                 Stack.ScheduleAchievementDisplay(Index);
             }
         }
