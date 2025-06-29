@@ -48,12 +48,24 @@ public class SalmonController : MonoBehaviour
 
     /// <summary>
     /// 키보드 Space 입력을 처리하는 메서드
-    /// </summary>
+    /// </summary> 
+
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.phase != InputActionPhase.Performed) return;
-        Debug.Log(salmonObject.IsWaterDetected());
-        if (salmonObject.IsWaterDetected() == false) return;
-        salmonObject.TakePush(Vector3.up, salmonObject.JumpForce); // 연어를 위로 튕겨내기
-    } 
+        if (!salmonObject.IsWaterDetected()) return;
+
+        // 이동 방향을 기준으로 회전 적용
+        Vector3 flatMoveDir = transform.forward * salmonObject.CurrentSpeed + salmonObject.WaterCurrent;
+        flatMoveDir.y = 0;
+        if (flatMoveDir.sqrMagnitude > 0.1f)
+        {
+            Quaternion jumpRot = Quaternion.LookRotation(flatMoveDir.normalized);
+            transform.rotation = jumpRot;
+        }
+
+        // 점프 힘 적용
+        salmonObject.TakePush(Vector3.up, salmonObject.JumpForce);
+    }
 }

@@ -130,11 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1321516265 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6088011308468608801, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-  m_PrefabInstance: {fileID: 494423505165882122}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &12083077134012224
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,10 +206,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1190365583836102305, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: TargetOffset.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1190365583836102305, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
       propertyPath: Orbits.Top.Height
       value: 2.5
       objectReference: {fileID: 0}
@@ -283,10 +274,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: whatIsWater.m_Bits
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
       propertyPath: groundCheckDistance
       value: 1
       objectReference: {fileID: 0}
@@ -314,10 +301,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SalmonAnim
       objectReference: {fileID: 0}
-    - target: {fileID: 8277008149062152803, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 494423505165882123}
     - target: {fileID: 9098346351952755831, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 43.55015
@@ -361,45 +344,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6088011308468608801, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 494423505165882130}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
---- !u!114 &494423505165882123 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8745231214958828265, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
-  m_PrefabInstance: {fileID: 494423505165882122}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321516265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1daa700a89348d54d98d677047948b53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!136 &494423505165882130
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321516265}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1
-  m_Height: 1.8
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &967915543243294752
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994099162200362161}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25340134, y: 0.0000000017879264, z: -4.3298487e-10, w: 0.9673613}
-  m_LocalPosition: {x: -5.5001526, y: -0.71799994, z: -9.857838}
+  m_LocalRotation: {x: 0.1508642, y: -0.0000000034774346, z: 5.3069393e-10, w: 0.98855454}
+  m_LocalPosition: {x: -5.5001526, y: 11.17, z: -9.857838}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -60,7 +60,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -102,14 +102,14 @@ MonoBehaviour:
   Radius: 10
   Orbits:
     Top:
-      Radius: 2
-      Height: 5
+      Radius: 5
+      Height: 2.5
     Center:
       Radius: 4
-      Height: 2.25
+      Height: 1.25
     Bottom:
       Radius: 2.5
-      Height: 0.1
+      Height: 0.5
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
@@ -270,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 3612820100367014825}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -355,8 +355,9 @@ GameObject:
   - component: {fileID: 1832108073740166464}
   - component: {fileID: 5439499151211775887}
   - component: {fileID: 1455769519533456284}
+  - component: {fileID: 4681339121756389259}
   m_Layer: 0
-  m_Name: Slamon_test
+  m_Name: Slamon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -371,7 +372,7 @@ Transform:
   m_GameObject: {fileID: 6088011308468608801}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.5001526, y: -2.968, z: -5.8578377}
+  m_LocalPosition: {x: -5.5001526, y: 9.92, z: -5.8578377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -496,7 +497,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1daa700a89348d54d98d677047948b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 8
 --- !u!54 &3620486768027582022
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -543,8 +543,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.17193687, z: 1}
-  m_Center: {x: 0, y: 0.18596846, z: 0}
+  m_Size: {x: 0.25, y: 0.234074, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5439499151211775887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,38 +558,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  freeLookCamera: {fileID: 3821390562291523244}
   accelerationBase: 4
   decelerationBase: 1
   currentSpeed: 0
   maxSpeed: 5
   minSpeed: 0
   waterCurrent: {x: 0, y: 0, z: 0}
-  rotationAcceleration: 90
-  maxAngularSpeed: 180
-  rotationDamping: 180
+  jumpForce: 8
+  rotationSmoothTime: 0.2
   speedTime: 0
   brakeTime: 0
   angularVelocity: 0
-  isAccelerating: 0
-  isBraking: 0
-  isTurningRight: 0
-  isTurningLeft: 0
+  moveInput: {x: 0, y: 0}
   turnDirection: 0
+  isChangingDirection: 0
   groundCheck: {fileID: 5359678089900117249}
   waterCheck: {fileID: 7389405750350590068}
   obstructionCheck: {fileID: 5392093936382933603}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   whatIsWater:
     serializedVersion: 2
     m_Bits: 16
   whatIsObstruction:
     serializedVersion: 2
     m_Bits: 0
-  groundCheckDistance: 4
-  waterCheckDistance: 4
-  obstructionCheckDistance: 4
+  groundCheckDistance: 1
+  waterCheckDistance: 1
+  obstructionCheckDistance: 1
 --- !u!114 &1455769519533456284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,6 +600,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79df9c6da9f5eaa4f888dfafe7e4b42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &4681339121756389259
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088011308468608801}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Height: 1.8
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6556921488926756031
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +648,7 @@ Transform:
   m_GameObject: {fileID: 6556921488926756031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -767,7 +788,7 @@ GameObject:
   - component: {fileID: 8700805291197913450}
   - component: {fileID: 342699767965756293}
   m_Layer: 0
-  m_Name: temp
+  m_Name: SalmonAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
