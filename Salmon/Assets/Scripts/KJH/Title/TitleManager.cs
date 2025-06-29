@@ -49,6 +49,8 @@ public class TitleManager : MonoBehaviour
         // 오디오 매니저에 유저 데이터 로드 알림
         AudioManager.Instance.OnLoadUserData();
 
+        AchievementManager.Instance.LoadAchievementState(); // 업적 데이터 로드
+
         // 게임 로딩 코루틴 시작
         StartCoroutine(LoadGameCo());
     }
@@ -97,7 +99,7 @@ public class TitleManager : MonoBehaviour
         // 로딩 슬라이더 값을 50%로 설정
         LoadingSlider.value = 0.5f;
         // 로딩 진행률 텍스트 업데이트
-        LoadingProgressTxt.text = ((int)(LoadingSlider.value * 100)).ToString();
+        LoadingProgressTxt.text = $"{(int)(LoadingSlider.value * 100)}%";
         // 0.5초 대기
         yield return new WaitForSeconds(0.5f);
 
@@ -107,7 +109,7 @@ public class TitleManager : MonoBehaviour
             // 로딩 진행률이 50% 미만이면 50%로, 아니면 실제 진행률로 설정
             LoadingSlider.value = m_AsyncOperation.progress < 0.5f ? 0.5f : m_AsyncOperation.progress;
             // 로딩 진행률 텍스트 업데이트
-            LoadingProgressTxt.text = ((int)(LoadingSlider.value * 100)).ToString();
+            LoadingProgressTxt.text = $"{(int)(LoadingSlider.value * 100)}%";
 
             // 씬 로딩이 완료되었다면 로비로 전환 처리하고 코루틴 종료
             // Unity에서 씬 로딩이 90% 완료된 상태를 나타냄

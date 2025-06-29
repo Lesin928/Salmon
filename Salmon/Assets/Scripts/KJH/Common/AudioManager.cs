@@ -1,30 +1,46 @@
 using Singleton.Component;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
-
-public enum Music
-{
-    COUNT
-}
-
-public enum SFX
-{
-    ProgressSound,
-    UnlockSound,
-    COUNT
-}
+using static AudioManager;
+using static Unity.VisualScripting.Member;
 
 public class AudioManager : SingletonComponent<AudioManager>
 {
+    public enum SFX { UI, Player, Bear, Voice }
+    public enum Music { BGM }
+
+    [System.Serializable]
+    public class AudioClipData
+    {
+        public string name;
+        public AudioClip clip;
+        [Range(0f, 1f)] public float volume = 1f;
+    }
+
     public Transform MusicTrs;
     public Transform SFXTrs;
 
-    private const string AUDIO_PATH = "Audios";
+    [SerializeField, Header("BGM Clips")]
+    private List<AudioClipData> bgmClips;
+
+    [SerializeField, Header("UI Clips")]
+    private List<AudioClipData> uiClips;
+
+    [SerializeField, Header("Player Clips")]
+    private List<AudioClipData> playerClips;
+
+    [SerializeField, Header("Bear Clips")]
+    private List<AudioClipData> bearClips;
+
+    [SerializeField, Header("Voice Clips")]
+    private List<AudioClipData> voiceClips;
 
     private Dictionary<Music, AudioSource> m_MusicPlayer = new Dictionary<Music, AudioSource>();
     private AudioSource m_CurrBGMSource;
 
     private Dictionary<SFX, AudioSource> m_SFXPlayer = new Dictionary<SFX, AudioSource>();
+
 
     #region Singleton
     protected override void AwakeInstance()
@@ -49,52 +65,67 @@ public class AudioManager : SingletonComponent<AudioManager>
     }
     #endregion
 
-    private void LoadBGMPlayer()
+    public void PlayMusic(string musicName)
     {
-        for (int i = 0; i < (int)Music.COUNT; i++)
+
+        var clipData = bgmClips.Find(c => c.name == musicName);
+
+        if (clipData == null)
         {
-            var audioName = ((Music)i).ToString();
-            var pathStr = $"KJH_Resources/{AUDIO_PATH}/{audioName}"; // 나중에 통합하면 KJH_Resources 지울 것
-            var audioClip = Resources.Load(pathStr, typeof(AudioClip)) as AudioClip;
-            if (!audioClip)
-            {
-                Debug.LogError($"{audioName} clip does not exist.");
-                continue;
-            }
-
-            var newGO = new GameObject(audioName);
-            var newAudioSource = newGO.AddComponent<AudioSource>();
-            newAudioSource.clip = audioClip;
-            newAudioSource.loop = true;
-            newAudioSource.playOnAwake = false;
-            newGO.transform.parent = MusicTrs;
-
-            m_MusicPlayer[(Music)i] = newAudioSource;
+            Debug.LogError($"Music clip '{musicName}' not found.");
+            return;
         }
+
+        if (m_CurrBGMSource != null)
+        {
+            m_CurrBGMSource.Stop();
+            Destroy(m_CurrBGMSource.gameObject);
+        }
+
+        var newGO = new GameObject($"Music {musicName}");
+        AudioSource newAudioSource = newGO.AddComponent<AudioSource>();
+        newAudioSource.clip = clipData.clip;
+        newAudioSource.volume = clipData.volume;
+        newAudioSource.loop = true;
+        newAudioSource.playOnAwake = false;
+        newGO.transform.parent = MusicTrs;
+
+
+        var userSettings = UserDataManager.Instance.GetUserData<UserSettingsData>();
+
+        float userVolume = userSettings != null ? userSettings.Music_Volume : 1f;
+        newAudioSource.volume = CalculateFinalVolume(clipData.volume, userVolume);
+
+
+        m_CurrBGMSource = newAudioSource;
+        m_CurrBGMSource.Play();
+
     }
 
-    private void LoadSFXPlayer()
+    public void PlaySFX(string sfxName)
     {
-        for (int i = 0; i < (int)SFX.COUNT; i++)
+
+        var clipData = playerClips.Find(c => c.name == sfxName) 
+            ?? bearClips.Find(c => c.name == sfxName) 
+            ?? voiceClips.Find(c => c.name == sfxName)
+            ?? uiClips.Find(c => c.name == sfxName);
+
+        if (clipData == null)
         {
-            var audioName = ((SFX)i).ToString();
-            var pathStr = $"KJH_Resources/{AUDIO_PATH}/{audioName}"; // 나중에 통합하면 KJH_Resources 지울 것
-            var audioClip = Resources.Load(pathStr, typeof(AudioClip)) as AudioClip;
-            if (!audioClip)
-            {
-                Debug.LogError($"{audioName} clip does not exist.");
-                continue;
-            }
-
-            var newGO = new GameObject(audioName);
-            var newAudioSource = newGO.AddComponent<AudioSource>();
-            newAudioSource.clip = audioClip;
-            newAudioSource.loop = false;
-            newAudioSource.playOnAwake = false;
-            newGO.transform.parent = SFXTrs;
-
-            m_SFXPlayer[(SFX)i] = newAudioSource;
+            Debug.LogError($"Music clip '{sfxName}' not found.");
+            return;
         }
+
+        var newGO = new GameObject(sfxName);
+        AudioSource newAudioSource = newGO.AddComponent<AudioSource>();
+        newAudioSource.clip = clipData.clip;
+        newAudioSource.volume = clipData.volume;
+        newAudioSource.loop = false;
+        newAudioSource.playOnAwake = false;
+        newGO.transform.parent = SFXTrs;
+
+        newAudioSource.Play();
+        GameObject.Destroy(newGO, clipData.clip.length);
     }
 
     public void OnLoadUserData()
@@ -106,23 +137,7 @@ public class AudioManager : SingletonComponent<AudioManager>
         }
     }
 
-    public void PlayMusic(Music music)
-    {
-        if (m_CurrBGMSource)
-        {
-            m_CurrBGMSource.Stop();
-            m_CurrBGMSource = null;
-        }
-
-        if (!m_MusicPlayer.ContainsKey(music))
-        {
-            Debug.LogError($"Invalid clip name. {music}");
-            return;
-        }
-
-        m_CurrBGMSource = m_MusicPlayer[music];
-        m_CurrBGMSource.Play();
-    }
+ 
 
     public void PauseMusic()
     {
@@ -139,27 +154,99 @@ public class AudioManager : SingletonComponent<AudioManager>
         if (m_CurrBGMSource) m_CurrBGMSource.Stop();
     }
 
-    public void PlaySFX(SFX sfx)
+
+    public void RandomPlaySFX(string name)
     {
-        if (!m_SFXPlayer.ContainsKey(sfx))
+        List<AudioClipData> targetList = null;
+
+        // 문자열로 리스트 이름 비교
+        switch (name)
         {
-            Debug.LogError($"Invalid clip name. ({sfx})");
+            case "bgmClips":
+                targetList = bgmClips;
+                break;
+            case "uiClips":
+                targetList = uiClips;
+                break;
+            case "playerClips":
+                targetList = playerClips;
+                break;
+            case "bearClips":
+                targetList = bearClips;
+                break;
+            case "voiceClips":
+                targetList = voiceClips;
+                break;
+            default:
+                Debug.LogWarning($"[AudioManager] '{name}'이라는 리스트를 찾을 수 없습니다.");
+                return;
+        }
+
+        if (targetList == null || targetList.Count == 0)
+        {
+            Debug.LogWarning($"[AudioManager] '{name}' 리스트가 비어 있습니다.");
             return;
         }
 
-        m_SFXPlayer[sfx].Play();
+        int randomIndex = Random.Range(0, targetList.Count);
+        AudioClip clip = targetList[randomIndex].clip;
+
+        if (clip == null)
+        {
+            Debug.LogWarning($"[AudioManager] 선택된 클립이 null입니다.");
+            return;
+        }
+
+        if(targetList == bgmClips )
+        {
+            PlayMusic(clip.name);  // BGM 또는 UI 클립 재생
+            Debug.Log($"[AudioManager] {name}에서 Music 랜덤 재생: {clip.name}");
+            return;
+        }
+        else if (targetList == playerClips || targetList == bearClips || targetList == voiceClips || targetList == uiClips)
+        {
+            PlaySFX(clip.name);  // SFX 클립 재생
+            Debug.Log($"[AudioManager] {name}에서 SFX 랜덤 재생: {clip.name}");
+            return; 
+        }
     }
+
+
 
     public void SetVolume(UserSettingsData userSettingsData)
     {
-        foreach (var audioSourceItem in m_MusicPlayer)
+        foreach (var pair in m_MusicPlayer)
         {
-            audioSourceItem.Value.volume = userSettingsData.Music_Volume;
+            AudioSource newAudioSource = pair.Value;
+
+            // 개별 clipData에서 볼륨 정보를 가져올 수 있어야 함
+            string name = newAudioSource.clip.name;
+
+            var clipData = bgmClips.Find(c => c.clip.name == name);
+
+            float clipVolume = clipData != null ? clipData.volume : 1f;
+            newAudioSource.volume = CalculateFinalVolume(clipVolume, userSettingsData.Music_Volume);
         }
 
-        foreach (var audioSourceItem in m_SFXPlayer)
+        foreach (var pair in m_SFXPlayer)
         {
-            audioSourceItem.Value.volume = userSettingsData.SFX_Volume;
+            AudioSource newAudioSource = pair.Value;
+
+            string name = newAudioSource.clip.name;
+
+            var clipData = playerClips.Find(c => c.clip.name == name)
+                        ?? bearClips.Find(c => c.clip.name == name)
+                        ?? voiceClips.Find(c => c.clip.name == name)
+                        ?? uiClips.Find(c => c.clip.name == name);
+
+
+            float clipVolume = clipData != null ? clipData.volume : 1f;
+            newAudioSource.volume = CalculateFinalVolume(clipVolume, userSettingsData.SFX_Volume);
         }
+    }
+
+    private float CalculateFinalVolume(float clipVolume, float userVolume)
+    {
+        return Mathf.Clamp01(clipVolume * userVolume);
     }
 }

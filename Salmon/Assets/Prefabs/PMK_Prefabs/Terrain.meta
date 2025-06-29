@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Salmon/Assets/Terrain/KJH_Terrain.meta
+guid: b79aaf07bfea45449ab4c6718c475224
+========
 guid: 26c89af6534d2784ea5a1aa6eb1cb1b3
+>>>>>>>> main:Salmon/Assets/Prefabs/PMK_Prefabs/Terrain.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
