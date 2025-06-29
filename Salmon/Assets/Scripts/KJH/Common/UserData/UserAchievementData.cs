@@ -53,7 +53,7 @@ public class UserAchievementData : IUserData
     public List<AchievementState> States { get; set; } = new List<AchievementState>();                       //List of achievement states (achieved, progress and last notification)
     public List<AchievementInformation> AchievementList { get; set; } = new List<AchievementInformation>();  //List of all available achievements
 
-    private const string ACHIEVEMENT_PATH = "Achievements";
+    private const string ACHIEVEMENT_PATH = "Achievement";
 
     public void SetDefaultData()
     {
