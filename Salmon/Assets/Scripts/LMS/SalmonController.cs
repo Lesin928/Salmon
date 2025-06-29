@@ -21,6 +21,7 @@ public class SalmonController : MonoBehaviour
 
     private void FixedUpdate()
     { 
+        //AudioManager.Instance.PlaySFX("Salmon_SlowSwim");
     }
     private void Update()
     { 
@@ -33,8 +34,20 @@ public class SalmonController : MonoBehaviour
     {
         if (salmonObject.IsWaterDetected() == false) return;
         Vector2 input = context.ReadValue<Vector2>();
-        salmonObject.MoveInput = input; 
+        salmonObject.MoveInput = input;
 
+
+        if (input.magnitude > 0.1f)
+        {
+            AudioManager.Instance.StopSFX("Salmon_SlowSwim");
+            AudioManager.Instance.PlaySFX("Salmon_Swim");
+            
+        }
+        else
+        {
+            AudioManager.Instance.StopSFX("Salmon_Swim");
+            AudioManager.Instance.PlaySFX("Salmon_SlowSwim");
+        }
         /*
         //레거시 코드: SalmonObject의 MoveInput을 설정하는 부분
         salmonObject.MoveInput = context.ReadValue<Vector2>();
@@ -58,6 +71,7 @@ public class SalmonController : MonoBehaviour
 
         // 점프 힘 적용
         salmonObject.TakePush(Vector3.up, salmonObject.JumpForce);
+        AudioManager.Instance.PlaySFX("Salmon_Jump");
 
         // 이동 방향을 기준으로 회전 적용 (rb의 수평 속도 기준)
         Vector3 moveDirection = salmonObject.rb.linearVelocity;
