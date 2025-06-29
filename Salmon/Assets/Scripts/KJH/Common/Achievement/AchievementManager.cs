@@ -228,8 +228,6 @@ public class AchievementManager : SingletonComponent<AchievementManager>
             States = userAchievementData.States;
             AchievementList = userAchievementData.AchievementList;
         }
-
-        Debug.Log($"AchievementList Count: {AchievementList.Count}");
     }
     /// <summary>
     /// Clears all saved progress and achieved states.

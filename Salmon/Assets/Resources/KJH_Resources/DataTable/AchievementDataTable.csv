@@ -1,2 +1,5 @@
 achievement_key,achievement_name,achievement_description,locked_icon,achieved_icon,achievement_goal,notification_frequency,suffix,is_hidden
-EXAMPLE,Example,Example,,,1,0,,FALSE
+REACH_THE_TOP,Until the day you lay eggs,You reached the top of the river.,icon_locked,icon_reach_the_top,1,0,,FALSE
+REACH_THE_TOP_FIVE_TIMES,Why am I going up?,Reached the top of the river five times.,icon_locked,icon_reach_the_top_five_times,5,1,,FALSE
+PLAY_FOR_TEN_HOURS,The ruler of river,Played for 10 hours.,icon_locked,icon_play_for_ten_hours,1,0,,FALSE
+SPEEDRUNNER,Speedrunner,Reached the top of the river within 5 minutes.,icon_locked,icon_speedrunner,1,0,,FALSE

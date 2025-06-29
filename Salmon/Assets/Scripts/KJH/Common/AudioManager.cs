@@ -76,6 +76,12 @@ public class AudioManager : SingletonComponent<AudioManager>
             return;
         }
 
+        if (m_CurrBGMSource != null && m_CurrBGMSource.clip != null && m_CurrBGMSource.clip.name == musicName)
+        {
+            Debug.Log($"[AudioManager] Music is already playing: {musicName}");
+            return;
+        }
+
         if (m_CurrBGMSource != null)
         {
             m_CurrBGMSource.Stop();
@@ -96,10 +102,8 @@ public class AudioManager : SingletonComponent<AudioManager>
         float userVolume = userSettings != null ? userSettings.Music_Volume : 1f;
         newAudioSource.volume = CalculateFinalVolume(clipData.volume, userVolume);
 
-
         m_CurrBGMSource = newAudioSource;
         m_CurrBGMSource.Play();
-
     }
 
     public void PlaySFX(string sfxName)

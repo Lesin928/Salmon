@@ -25,10 +25,11 @@ public class SalmonGizmos : MonoBehaviour
      
         Vector3 start2 = transform.position;
         // 전방 방향 (W 입력 시 이동 예정 방향)
+        /*
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(start2, start2 + transform.forward * 2f);
         Gizmos.DrawSphere(start2 + transform.forward * 2f, 0.1f);
-
+        */
         // 실제 이동 방향
         if (Application.isPlaying)
         {
@@ -49,11 +50,5 @@ public class SalmonGizmos : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(salmonObject.waterCheck.position, salmonObject.waterCheck.position + Vector3.down * salmonObject.waterCheckDistance);
-
-
-
     }
-
-
-
 }

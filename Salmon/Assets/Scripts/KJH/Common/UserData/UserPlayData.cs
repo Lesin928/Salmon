@@ -5,6 +5,7 @@ public class UserPlayData : IUserData
     public bool ExistsSavedPlayData { get; set; }
     public float PlayTime { get; set; }
     public Vector3 PlayerPosition { get; set; }
+    public float NewRecord { get; set; }
 
     // 기본 데이터 설정 메서드
     public void SetDefaultData()
@@ -12,6 +13,17 @@ public class UserPlayData : IUserData
         Debug.Log($"{GetType()}::SetDefaultData");
 
         // 기본값으로 데이터 초기화
+        ExistsSavedPlayData = false;
+        PlayTime = 0f;
+        PlayerPosition = Vector3.zero;
+        NewRecord = Mathf.Infinity;
+    }
+
+    public void SoftResetData()
+    {
+        Debug.Log($"{GetType()}::SoftResetData");
+
+        // 소프트 리셋: 플레이 시간과 플레이어 위치만 초기화
         ExistsSavedPlayData = false;
         PlayTime = 0f;
         PlayerPosition = Vector3.zero;
@@ -37,6 +49,7 @@ public class UserPlayData : IUserData
                 PlayerPrefs.GetFloat("PlayerPositionY"),
                 PlayerPrefs.GetFloat("PlayerPositionZ")
             );
+            NewRecord = PlayerPrefs.GetFloat("NewRecord");
 
             // 로드 성공으로 설정
             result = true;
@@ -70,6 +83,7 @@ public class UserPlayData : IUserData
             PlayerPrefs.SetFloat("PlayerPositionX", PlayerPosition.x);
             PlayerPrefs.SetFloat("PlayerPositionY", PlayerPosition.y);
             PlayerPrefs.SetFloat("PlayerPositionZ", PlayerPosition.z);
+            PlayerPrefs.SetFloat("NewRecord", NewRecord);
 
             // PlayerPrefs 저장 실행
             PlayerPrefs.Save();
