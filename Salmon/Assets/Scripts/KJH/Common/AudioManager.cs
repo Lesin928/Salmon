@@ -68,11 +68,18 @@ public class AudioManager : SingletonComponent<AudioManager>
     public void PlayMusic(string musicName)
     {
 
-        var clipData = bgmClips.Find(c => c.name == musicName);
+        var clipData = bgmClips.Find(c => c.name == musicName)
+            ?? uiClips.Find(c => c.name == musicName);
 
         if (clipData == null)
         {
             Debug.LogError($"Music clip '{musicName}' not found.");
+            return;
+        }
+
+        if (m_CurrBGMSource != null && m_CurrBGMSource.clip != null && m_CurrBGMSource.clip.name == musicName)
+        {
+            Debug.Log($"[AudioManager] Music is already playing: {musicName}");
             return;
         }
 
@@ -96,10 +103,8 @@ public class AudioManager : SingletonComponent<AudioManager>
         float userVolume = userSettings != null ? userSettings.Music_Volume : 1f;
         newAudioSource.volume = CalculateFinalVolume(clipData.volume, userVolume);
 
-
         m_CurrBGMSource = newAudioSource;
         m_CurrBGMSource.Play();
-
     }
 
     public void PlaySFX(string sfxName)
