@@ -1,6 +1,9 @@
 public enum AchievementKey
 {
-    EXAMPLE
+    REACH_THE_TOP,
+    REACH_THE_TOP_FIVE_TIMES,
+    PLAY_FOR_TEN_HOURS,
+    SPEEDRUNNER
 }
 
 public class AchievementData
