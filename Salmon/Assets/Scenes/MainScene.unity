@@ -6889,6 +6889,10 @@ PrefabInstance:
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4761987310900496876, guid: a1c2569e4ad9c2345951da4917738832, type: 3}
+      propertyPath: m_DrawInstanced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761987310900496876, guid: a1c2569e4ad9c2345951da4917738832, type: 3}
       propertyPath: m_SplatMapDistance
       value: 500
       objectReference: {fileID: 0}
