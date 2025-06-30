@@ -88,6 +88,12 @@ MonoBehaviour:
   - name: Salmon_Swim
     clip: {fileID: 8300000, guid: ca5587dcbb0a8e349a9a60601c1cd0fc, type: 3}
     volume: 0.1
+  - name: Salmon_Ground_Jump
+    clip: {fileID: 8300000, guid: 054063ccb61b40e429163c189b9427ed, type: 3}
+    volume: 0.1
+  - name: Salmon_Ground_Arrive
+    clip: {fileID: 8300000, guid: fd6482a40629edb4e8adeeeb2519dff9, type: 3}
+    volume: 0.1
   bearClips:
   - name: Bear_Fear
     clip: {fileID: 8300000, guid: be59c3a06823bfb4088d53ad909cd288, type: 3}
