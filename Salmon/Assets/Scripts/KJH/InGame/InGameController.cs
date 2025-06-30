@@ -3,19 +3,24 @@ using UnityEngine;
 
 public class InGameController : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
     [SerializeField] private TextMeshProUGUI timerText;
-    private bool isGameCleared = false;
+    private bool isGameCompleted;
 
     private void Start()
     {
+        isGameCompleted = false;
+
         UpdateTimer();
+        player.transform.position = GameManager.Instance.PlayerPosition;
+        player.transform.rotation = Quaternion.Euler(GameManager.Instance.PlayerRotation);
 
         UIManager.Instance.Fade(Color.black, 1f, 0f, 0.5f, 0f, true);
     }
 
     private void Update()
     {
-        if (isGameCleared)
+        if (isGameCompleted)
         {
             return;
         }
@@ -28,6 +33,9 @@ public class InGameController : MonoBehaviour
         GameManager.Instance.PlayTime += Time.deltaTime;
         GameManager.Instance.TotalPlayTime += Time.deltaTime;
         UpdateTimer();
+
+        GameManager.Instance.PlayerPosition = player.transform.position;
+        GameManager.Instance.PlayerRotation = player.transform.rotation.eulerAngles;
 
         int hours = Mathf.FloorToInt(GameManager.Instance.TotalPlayTime / 3600f);
         if(hours >= 10)
@@ -61,14 +69,17 @@ public class InGameController : MonoBehaviour
         GameManager.Instance.PauseGame(pause);
     }
 
-    public void SetGameCleared()
+    public void CompleteGoal()
     {
-        isGameCleared = true;
+        isGameCompleted = true;
 
         if(GameManager.Instance.PlayTime < GameManager.Instance.NewRecord)
         {
             GameManager.Instance.NewRecord = GameManager.Instance.PlayTime;
         }
+
+        AchievementManager.Instance.SetAchievementProgress(AchievementKey.REACH_THE_TOP.ToString(), 1);
+        AchievementManager.Instance.AddAchievementProgress(AchievementKey.REACH_THE_TOP_FIVE_TIMES.ToString(), 1);
 
         int minutes = Mathf.FloorToInt(GameManager.Instance.PlayTime / 60f);
         int seconds = Mathf.FloorToInt(GameManager.Instance.PlayTime % 60f);
@@ -78,13 +89,16 @@ public class InGameController : MonoBehaviour
         }
 
         GameManager.Instance.SavePlayData();
+
+        var uiData = new UIBaseData();
+        UIManager.Instance.OpenUI<CompleteUI>(uiData);
     }
 
     private void OnApplicationFocus(bool focus)
     {
         if (!focus)
         {
-            if (!GameManager.Instance.IsPaused)
+            if (!GameManager.Instance.IsPaused && !isGameCompleted)
             {
                 var uiData = new UIBaseData();
                 UIManager.Instance.OpenUI<PauseUI>(uiData);
