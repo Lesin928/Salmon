@@ -14,6 +14,7 @@ public class SalmonObject : MonoBehaviour
     protected SalmonObject playerObject;
     public Rigidbody rb;
     public CinemachineCamera freeLookCamera; // FreeLook 카메라 참조
+    private Animator animator;
     #endregion
 
     #region Salmon Info    
@@ -27,9 +28,11 @@ public class SalmonObject : MonoBehaviour
     [SerializeField] private float jumpForce = 8f;  // 세게 튀는 힘
 
 
+
     [Header("회전 관련")]
     [SerializeField] private float rotationSmoothTime = 0.2f;
     private float turnSmoothVelocity;
+    public Vector3 desiredDirection;
 
     //레거시 코드
     /*
@@ -56,6 +59,8 @@ public class SalmonObject : MonoBehaviour
     [SerializeField] public Transform groundCheck;
     [SerializeField] public Transform waterCheck;
     [SerializeField] public Transform obstructionCheck;
+    [SerializeField] public Transform tailCheck;
+    [SerializeField] public Transform headCheck;
     [SerializeField] protected LayerMask whatIsGround;
     [SerializeField] protected LayerMask whatIsWater;
     [SerializeField] protected LayerMask whatIsObstruction;
@@ -134,21 +139,34 @@ public class SalmonObject : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
     {
-    } 
+    }
     void FixedUpdate()
     {
+        if (IsGroundDetected())
+        {
+            if (animator.enabled) animator.enabled = false;
+            return;
+        } 
+        // 물속일 때: 애니메이터 활성화 + 움직임 체크
+        if (!animator.enabled) animator.enabled = true;
+        bool isMoving = rb.linearVelocity.magnitude > 0.1f;
+        animator.SetBool("IsMoving", isMoving);
+
+
         // 점프 후 공중에서 이동 방향으로 X축 회전 적용
         if (!IsWaterDetected())
         {
-            if(wasInWater)
+            if (wasInWater)
             {
                 Debug.Log("공중에 있습니다.");
                 wasInWater = false; // 상태 갱신
             }
+            /*
             Vector3 horizontalVelocity = rb.linearVelocity;
             horizontalVelocity.y = 0f;
             if (horizontalVelocity.sqrMagnitude > 0.1f)
@@ -156,6 +174,7 @@ public class SalmonObject : MonoBehaviour
                 Quaternion airRot = Quaternion.LookRotation(horizontalVelocity.normalized);
                 transform.rotation = Quaternion.Euler(airRot.eulerAngles.x, transform.rotation.eulerAngles.y, 0f);
             }
+            */
         }
         else
         {
@@ -180,11 +199,12 @@ public class SalmonObject : MonoBehaviour
             camRight.y = 0;
             camRight.Normalize();
 
-            Vector3 desiredDirection = camForward * moveInput.y + camRight * moveInput.x;
+            desiredDirection = camForward * moveInput.y + camRight * moveInput.x;
             desiredDirection.Normalize();
 
             if (desiredDirection != Vector3.zero)
             {
+                if (IsWaterDetected() == false) return;
                 float targetAngle = Mathf.Atan2(desiredDirection.x, desiredDirection.z) * Mathf.Rad2Deg;
                 float smoothedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, rotationSmoothTime);
                 transform.rotation = Quaternion.Euler(transform.eulerAngles.x, smoothedAngle, 0f);
@@ -194,12 +214,13 @@ public class SalmonObject : MonoBehaviour
         //회전시 속도 잠깐 감소
         if (isChangingDirection)
         {
-            currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, Time.fixedDeltaTime * 5f); 
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, Time.fixedDeltaTime * 5f);
         }
 
         // 입력시 움직임
-        if(moveInput != Vector2.zero)
+        if (moveInput != Vector2.zero)
         {
+            if (IsWaterDetected() == false) return;
             speedTime += Time.fixedDeltaTime;
             currentSpeed = Mathf.Pow(accelerationBase, speedTime);
             currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
@@ -210,16 +231,34 @@ public class SalmonObject : MonoBehaviour
             currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, Time.fixedDeltaTime * 5f); // 현재 속도 감소
         }
         else
-        { 
+        {
             currentSpeed = 0f; // 속도가 0 이하로 떨어지면 0으로 설정
         }
 
-        Vector3 flatVelocity = transform.forward * currentSpeed + waterCurrent;
-        rb.linearVelocity = new Vector3(flatVelocity.x, rb.linearVelocity.y, flatVelocity.z);
-        // 수평 회복 적용
-        //MaintainUprightRotation(); 
-    }
 
+        if (IsWaterDetected())
+        {
+            Vector3 flatVelocity = transform.forward * currentSpeed + waterCurrent;
+            rb.linearVelocity = new Vector3(flatVelocity.x, rb.linearVelocity.y, flatVelocity.z);
+            // 수평 회복 적용
+            MaintainUprightRotation();
+        }
+        else if (!IsWaterDetected()) 
+        { 
+            if (isHeadReturning)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, originalRotation, 2f * Time.fixedDeltaTime);
+
+                // 거의 다 돌아왔으면 멈춤
+                if (Quaternion.Angle(transform.rotation, originalRotation) < 0.5f)
+                {
+                    transform.rotation = originalRotation;
+                    isHeadReturning = false;
+                }
+            }
+        } 
+         
+    }
     /// <summary>  
     /// 물살을 적용하는 메서드
     /// </summary>  
@@ -234,20 +273,52 @@ public class SalmonObject : MonoBehaviour
     public void TakePush(Vector3 vector, float force)
     {
         rb.AddForce(vector * force + rb.linearVelocity, ForceMode.Impulse);
-    } 
+    }
+    /// <summary>
+    /// 연어가 팔딱이는 메서드
+    /// </summary>
+    public void PositionPush(Vector3 vector, Transform transform, float force)
+    {    
+        Vector3 forceVector = desiredDirection.normalized * force;
+        rb.AddForceAtPosition(forceVector, transform.position, ForceMode.Impulse);
+    }
     /// <summary>
     /// 연어 수평회복 메서드
     /// </summary>
     private void MaintainUprightRotation()
     {
-        if (IsWaterDetected())
+        if (IsGroundDetected())
         {
+            Debug.Log("땅호출");
+            Quaternion currentRot = transform.rotation;
+            Quaternion targetRot = Quaternion.Euler(0f, currentRot.eulerAngles.y, -90f);
+            transform.rotation = Quaternion.Slerp(currentRot, targetRot, 6f * Time.fixedDeltaTime);
+        }
+        else if (IsWaterDetected())
+        {
+            Debug.Log("물호출");
             Quaternion currentRot = transform.rotation;
             Quaternion targetRot = Quaternion.Euler(0f, currentRot.eulerAngles.y, 0f); // Y만 유지하고 X/Z는 수평으로 보정
 
             transform.rotation = Quaternion.Slerp(currentRot, targetRot, 2f * Time.fixedDeltaTime);
         }
     }
+    private Quaternion originalRotation;
+    private bool isHeadReturning = false;
+
+    public void HeadUp()
+    {
+        // 현재 회전 상태 저장
+        originalRotation = transform.rotation;
+
+        // X축을 -60으로 강제 회전, Y/Z는 유지
+        Quaternion liftedRot = Quaternion.Euler(-60f, originalRotation.eulerAngles.y, originalRotation.eulerAngles.z);
+        transform.rotation = liftedRot;
+
+        // 다음 프레임부터 천천히 돌아가기 시작
+        isHeadReturning = true;
+    }
+
 
     /// <summary>
     /// 연어 회전 메서드 (레거시)

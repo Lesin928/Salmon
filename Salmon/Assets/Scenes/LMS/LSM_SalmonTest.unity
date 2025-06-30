@@ -176,6 +176,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
+--- !u!4 &2129501411 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5519530618387247297, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+  m_PrefabInstance: {fileID: 494423505165882122}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2131833174 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1775667240320700191, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+  m_PrefabInstance: {fileID: 494423505165882122}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &12083077134012224
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +264,62 @@ PrefabInstance:
     - target: {fileID: 3942243943682476850, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
       propertyPath: m_Name
       value: Salmon_Set
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765638654702686681, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.619999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765638654702686681, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765638654702686681, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.260002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359678089900117249, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: headCheck
+      value: 
+      objectReference: {fileID: 2131833174}
+    - target: {fileID: 5439499151211775887, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: tailCheck
+      value: 
+      objectReference: {fileID: 2129501411}
+    - target: {fileID: 7311730262564593139, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311730262564593139, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311730262564593139, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311730262564593139, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311730262564593139, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311730262564593139, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389405750350590068, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8198626450207343235, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9098346351952755831, guid: ddcf54038a4d98148ae77c2034dc97ba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -858,7 +924,7 @@ Transform:
   m_GameObject: {fileID: 4827182861322608884}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15086423, y: -0.0000000034774355, z: 5.306946e-10, w: 0.98855454}
-  m_LocalPosition: {x: 38.05, y: 18.63162, z: 28.34}
+  m_LocalPosition: {x: 40.930153, y: 9.71162, z: 43.45784}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1041,7 +1107,7 @@ GameObject:
   - component: {fileID: 373398225556763549}
   - component: {fileID: 1371240570954679619}
   - component: {fileID: 4864443455003604048}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(0.00, 5.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

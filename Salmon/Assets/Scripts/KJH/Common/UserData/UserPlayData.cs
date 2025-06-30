@@ -3,10 +3,11 @@ using UnityEngine;
 public class UserPlayData : IUserData
 {
     public bool ExistsSavedPlayData { get; set; }
-    public float PlayTime { get; set; }
     public Vector3 PlayerPosition { get; set; }
-    public float NewRecord { get; set; }
+    public Vector3 PlayerRotation { get; set; }
+    public float PlayTime { get; set; }
     public float TotalPlayTime { get; set; }
+    public float NewRecord { get; set; }
 
     // 기본 데이터 설정 메서드
     public void SetDefaultData()
@@ -15,10 +16,11 @@ public class UserPlayData : IUserData
 
         // 기본값으로 데이터 초기화
         ExistsSavedPlayData = false;
+        PlayerPosition = new Vector3(0, 75f, 0f);
+        PlayerRotation = new Vector3(0f, 180f, 0f);
         PlayTime = 0f;
-        PlayerPosition = Vector3.zero;
-        NewRecord = Mathf.Infinity;
         TotalPlayTime = 0f;
+        NewRecord = Mathf.Infinity;
     }
 
     public void SoftResetData()
@@ -28,7 +30,8 @@ public class UserPlayData : IUserData
         // 소프트 리셋: 플레이 시간과 플레이어 위치만 초기화
         ExistsSavedPlayData = false;
         PlayTime = 0f;
-        PlayerPosition = Vector3.zero;
+        PlayerPosition = new Vector3(0, 75f, 0f);
+        PlayerRotation = new Vector3(0f, 180f, 0f);
     }
 
     // 저장된 데이터를 불러오는 메서드
@@ -45,14 +48,19 @@ public class UserPlayData : IUserData
         {
             // PlayerPrefs에서 저장된 데이터 불러오기
             ExistsSavedPlayData = PlayerPrefs.GetInt("ExistsSavedPlayData") == 1 ? true : false;
-            PlayTime = PlayerPrefs.GetFloat("PlayTime");
             PlayerPosition = new Vector3(
                 PlayerPrefs.GetFloat("PlayerPositionX"),
                 PlayerPrefs.GetFloat("PlayerPositionY"),
                 PlayerPrefs.GetFloat("PlayerPositionZ")
             );
-            NewRecord = PlayerPrefs.GetFloat("NewRecord");
+            PlayerRotation = new Vector3(
+                PlayerPrefs.GetFloat("PlayerRotationX"),
+                PlayerPrefs.GetFloat("PlayerRotationY"),
+                PlayerPrefs.GetFloat("PlayerRotationZ")
+            );
+            PlayTime = PlayerPrefs.GetFloat("PlayTime");
             TotalPlayTime = PlayerPrefs.GetFloat("TotalPlayTime");
+            NewRecord = PlayerPrefs.GetFloat("NewRecord");
 
             // 로드 성공으로 설정
             result = true;
@@ -82,12 +90,18 @@ public class UserPlayData : IUserData
         {
             // PlayerPrefs에 현재 플레이 데이터 저장
             PlayerPrefs.SetInt("ExistsSavedPlayData", ExistsSavedPlayData ? 1 : 0);
-            PlayerPrefs.SetFloat("PlayTime", PlayTime);
+
             PlayerPrefs.SetFloat("PlayerPositionX", PlayerPosition.x);
             PlayerPrefs.SetFloat("PlayerPositionY", PlayerPosition.y);
             PlayerPrefs.SetFloat("PlayerPositionZ", PlayerPosition.z);
-            PlayerPrefs.SetFloat("NewRecord", NewRecord);
+
+            PlayerPrefs.SetFloat("PlayerRotationX", PlayerRotation.x);
+            PlayerPrefs.SetFloat("PlayerRotationY", PlayerRotation.y);
+            PlayerPrefs.SetFloat("PlayerRotationZ", PlayerRotation.z);
+
+            PlayerPrefs.SetFloat("PlayTime", PlayTime);
             PlayerPrefs.SetFloat("TotalPlayTime", TotalPlayTime);
+            PlayerPrefs.SetFloat("NewRecord", NewRecord);
 
             // PlayerPrefs 저장 실행
             PlayerPrefs.Save();
