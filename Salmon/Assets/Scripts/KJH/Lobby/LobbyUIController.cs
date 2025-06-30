@@ -11,7 +11,7 @@ public class LobbyUIController : MonoBehaviour
         if (GameManager.Instance.NewRecord != Mathf.Infinity)
         {
             int hours = Mathf.FloorToInt(GameManager.Instance.NewRecord / 3600f);
-            int minutes = Mathf.FloorToInt(GameManager.Instance.NewRecord / 60f);
+            int minutes = Mathf.FloorToInt(GameManager.Instance.NewRecord / 60f % 60f);
             int seconds = Mathf.FloorToInt(GameManager.Instance.NewRecord % 60f);
             m_RecordText.text = string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
         }
