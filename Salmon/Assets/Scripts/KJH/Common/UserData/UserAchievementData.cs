@@ -57,7 +57,6 @@ public class UserAchievementData : IUserData
 
     public void SetDefaultData()
     {
-        AchievementList.Clear();
         AchievementList = DataTableManager.Instance.GetAchievementDataList().Select(x => new AchievementInformation
         {
             Key = x.AchievementKey.ToString(),
@@ -81,7 +80,22 @@ public class UserAchievementData : IUserData
 
     public bool LoadData()
     {
+        Debug.Log($"{GetType()}::LoadData");
+
         bool result = false;
+
+        AchievementList = DataTableManager.Instance.GetAchievementDataList().Select(x => new AchievementInformation
+        {
+            Key = x.AchievementKey.ToString(),
+            DisplayName = x.AchievementName,
+            Description = x.AchievementDescription,
+            LockedIcon = Resources.Load<Sprite>($"{ACHIEVEMENT_PATH}/{x.LockedIcon}"),
+            AchievedIcon = Resources.Load<Sprite>($"{ACHIEVEMENT_PATH}/{x.AchievedIcon}"),
+            Spoiler = x.IsHidden,
+            ProgressGoal = x.AchievementGoal,
+            NotificationFrequency = x.NotificationFrequency,
+            ProgressSuffix = x.Suffix
+        }).ToList();
 
         try
         {
@@ -90,6 +104,7 @@ public class UserAchievementData : IUserData
 
             for (int i = 0; i < AchievementList.Count; i++)
             {
+                Debug.Log($"Loading AchievementState_{i}");
                 //Ensure that new project get default values
                 if (PlayerPrefs.HasKey("AchievementState_" + i))
                 {
@@ -114,6 +129,8 @@ public class UserAchievementData : IUserData
 
     public bool SaveData()
     {
+        Debug.Log($"{GetType()}::SaveData");
+
         bool result = false;
 
         try
