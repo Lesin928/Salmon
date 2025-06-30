@@ -84,12 +84,27 @@ public class AudioManager : SingletonComponent<AudioManager>
             return;
         }
 
-        if (m_CurrBGMSource != null && m_CurrBGMSource.clip.name != "thinking" && m_CurrBGMSource.clip.name != "slient_viliage")
+        if (m_CurrBGMSource != null && m_CurrBGMSource.clip.name != "thinking" && m_CurrBGMSource.clip.name != "slient_village")
         {
             m_CurrBGMSource.Stop();
             Destroy(m_CurrBGMSource.gameObject);
+            Debug.Log("3");
         }
-        
+        //if (m_CurrBGMSource != null && m_CurrBGMSource.clip.name == "thinking" && m_CurrBGMSource.clip.name != "slient_village")
+        //{
+        //    m_CurrBGMSource.Stop();
+        //    Destroy(m_CurrBGMSource.gameObject);
+        //    Debug.Log("1");
+        //}
+        //if (m_CurrBGMSource != null && m_CurrBGMSource.clip.name != "thinking" && m_CurrBGMSource.clip.name == "slient_village")
+        //{
+        //    m_CurrBGMSource.Stop();
+        //    Destroy(m_CurrBGMSource.gameObject);
+        //    Debug.Log("2");
+        //}
+
+
+
         var newGO = new GameObject($"Music {musicName}");
         AudioSource newAudioSource = newGO.AddComponent<AudioSource>();
         newAudioSource.clip = clipData.clip;

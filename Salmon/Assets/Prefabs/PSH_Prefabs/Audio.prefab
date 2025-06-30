@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae442b1bb070d94394490eaebba01a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClipName: main
+  audioClipName: thinking
 --- !u!1 &4889242653672291762
 GameObject:
   m_ObjectHideFlags: 0

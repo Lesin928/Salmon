@@ -49,7 +49,7 @@ MonoBehaviour:
   MusicTrs: {fileID: 802985552628523770}
   SFXTrs: {fileID: 3241321825426145016}
   bgmClips:
-  - name: main
+  - name: thinking
     clip: {fileID: 8300000, guid: 3b1ab403a89724cb19f6c70b171b29e3, type: 3}
     volume: 0.06
   - name: Title

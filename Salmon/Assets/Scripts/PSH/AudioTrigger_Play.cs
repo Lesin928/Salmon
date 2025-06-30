@@ -30,7 +30,7 @@ public class AudioTrigger_Play : MonoBehaviour
 
             // 사운드가 AudioManager에 존재하는지 확인
             audioManager.PlayMusic(audioClipName);
-            Debug.Log($"[auidoClipName] 재생");
+            Debug.Log($"{audioClipName} 재생");
 
         }
     }
