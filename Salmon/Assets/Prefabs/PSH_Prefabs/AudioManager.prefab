@@ -29,7 +29,9 @@ Transform:
   m_LocalPosition: {x: -11.258796, y: -16.976622, z: 45.61994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 802985552628523770}
+  - {fileID: 3241321825426145016}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3232008543168269626
@@ -44,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1228ce6bf080bdb4d94649e7550fa11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicTrs: {fileID: 0}
-  SFXTrs: {fileID: 0}
+  MusicTrs: {fileID: 802985552628523770}
+  SFXTrs: {fileID: 3241321825426145016}
   bgmClips:
   - name: main
     clip: {fileID: 8300000, guid: 3b1ab403a89724cb19f6c70b171b29e3, type: 3}
@@ -87,6 +89,12 @@ MonoBehaviour:
     volume: 0.1
   - name: Salmon_Swim
     clip: {fileID: 8300000, guid: ca5587dcbb0a8e349a9a60601c1cd0fc, type: 3}
+    volume: 0.1
+  - name: Salmon_Ground_Jump
+    clip: {fileID: 8300000, guid: 054063ccb61b40e429163c189b9427ed, type: 3}
+    volume: 0.1
+  - name: Salmon_Ground_Arrive
+    clip: {fileID: 8300000, guid: fd6482a40629edb4e8adeeeb2519dff9, type: 3}
     volume: 0.1
   bearClips:
   - name: Bear_Fear
@@ -141,3 +149,65 @@ MonoBehaviour:
   - name: 15
     clip: {fileID: 8300000, guid: 7afd6f75adb8aec4597560e9ae74318a, type: 3}
     volume: 0.1
+--- !u!1 &4255611804454200508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 802985552628523770}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &802985552628523770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4255611804454200508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5845697023574947815}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7112344274700032276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3241321825426145016}
+  m_Layer: 0
+  m_Name: SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3241321825426145016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112344274700032276}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5845697023574947815}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
