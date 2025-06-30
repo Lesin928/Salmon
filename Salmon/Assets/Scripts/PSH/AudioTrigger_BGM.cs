@@ -8,6 +8,8 @@ public class AudioTrigger_BGM : MonoBehaviour
 
     public void Start()
     {
+
+
         if (audioManager == null)
         {
             audioManager = AudioManager.Instance;
