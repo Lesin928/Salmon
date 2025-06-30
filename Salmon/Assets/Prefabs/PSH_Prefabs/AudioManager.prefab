@@ -51,10 +51,10 @@ MonoBehaviour:
   bgmClips:
   - name: main
     clip: {fileID: 8300000, guid: 3b1ab403a89724cb19f6c70b171b29e3, type: 3}
-    volume: 0.04
+    volume: 0.06
   - name: Title
     clip: {fileID: 8300000, guid: 9498018249f214d9e83e47fdaa6fe0e6, type: 3}
-    volume: 0.04
+    volume: 0.14
   - name: "\uBC14\uB2E4"
     clip: {fileID: 8300000, guid: 5a97e92adbc41f44ab231640a9943b54, type: 3}
     volume: 0.1
