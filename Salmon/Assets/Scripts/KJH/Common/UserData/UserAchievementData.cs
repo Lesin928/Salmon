@@ -55,7 +55,7 @@ public class UserAchievementData : IUserData
 
     private const string ACHIEVEMENT_PATH = "Achievement";
 
-    public void SetDefaultData()
+    private void Init()
     {
         AchievementList = DataTableManager.Instance.GetAchievementDataList().Select(x => new AchievementInformation
         {
@@ -69,6 +69,11 @@ public class UserAchievementData : IUserData
             NotificationFrequency = x.NotificationFrequency,
             ProgressSuffix = x.Suffix
         }).ToList();
+    }
+
+    public void SetDefaultData()
+    {
+        Init();
 
         States.Clear();
         for (int i = 0; i < AchievementList.Count; i++)
@@ -84,18 +89,7 @@ public class UserAchievementData : IUserData
 
         bool result = false;
 
-        AchievementList = DataTableManager.Instance.GetAchievementDataList().Select(x => new AchievementInformation
-        {
-            Key = x.AchievementKey.ToString(),
-            DisplayName = x.AchievementName,
-            Description = x.AchievementDescription,
-            LockedIcon = Resources.Load<Sprite>($"{ACHIEVEMENT_PATH}/{x.LockedIcon}"),
-            AchievedIcon = Resources.Load<Sprite>($"{ACHIEVEMENT_PATH}/{x.AchievedIcon}"),
-            Spoiler = x.IsHidden,
-            ProgressGoal = x.AchievementGoal,
-            NotificationFrequency = x.NotificationFrequency,
-            ProgressSuffix = x.Suffix
-        }).ToList();
+        Init();
 
         try
         {
