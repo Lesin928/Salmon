@@ -1860,25 +1860,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1440331234801515805, guid: 77822d71e8aef984aa7d45c7ffa1d6fb, type: 3}
-      propertyPath: audioManager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1988463249526741905, guid: 77822d71e8aef984aa7d45c7ffa1d6fb, type: 3}
       propertyPath: m_Name
       value: TitleAudio
       objectReference: {fileID: 0}
     - target: {fileID: 6347651815080407613, guid: 77822d71e8aef984aa7d45c7ffa1d6fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -842.6381
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6347651815080407613, guid: 77822d71e8aef984aa7d45c7ffa1d6fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 762.26996
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6347651815080407613, guid: 77822d71e8aef984aa7d45c7ffa1d6fb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1057.2008
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6347651815080407613, guid: 77822d71e8aef984aa7d45c7ffa1d6fb, type: 3}
       propertyPath: m_LocalRotation.w

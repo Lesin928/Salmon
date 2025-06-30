@@ -32,7 +32,6 @@ public class SalmonController : MonoBehaviour
     /// </summary>
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (salmonObject.IsWaterDetected() == false) return;
         Vector2 input = context.ReadValue<Vector2>();
         salmonObject.MoveInput = input;
 
@@ -67,19 +66,16 @@ public class SalmonController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.phase != InputActionPhase.Performed) return;
-        if (!salmonObject.IsWaterDetected()) return;
-
-        // 점프 힘 적용
-        salmonObject.TakePush(Vector3.up, salmonObject.JumpForce);
-        AudioManager.Instance.PlaySFX("Salmon_Jump");
-
-        // 이동 방향을 기준으로 회전 적용 (rb의 수평 속도 기준)
-        Vector3 moveDirection = salmonObject.rb.linearVelocity;
-        moveDirection.y = 0f;
-        if (moveDirection.sqrMagnitude > 0.1f)
-        {
-            Quaternion jumpRot = Quaternion.LookRotation(moveDirection.normalized);
-            transform.rotation = Quaternion.Euler(jumpRot.eulerAngles.x, jumpRot.eulerAngles.y, 0f);
-        } 
+        if (salmonObject.IsWaterDetected())
+        { 
+            salmonObject.TakePush(Vector3.up, salmonObject.JumpForce);
+            //salmonObject.PositionPush(Vector3.up, salmonObject.headCheck, salmonObject.JumpForce);
+            AudioManager.Instance.PlaySFX("Salmon_Jump");
+        }            
+        else if (salmonObject.IsGroundDetected()) // 땅에 닿아있을 때는 강하게 대각선 점프
+        { 
+            salmonObject.TakePush(Vector3.up, salmonObject.JumpForce*0.7f);
+            salmonObject.PositionPush(salmonObject.desiredDirection, salmonObject.tailCheck, salmonObject.JumpForce); 
+        }   
     }
 }
