@@ -1297,71 +1297,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 717094092888007636, guid: 6713423a5516d264da9e4967681ddeff, type: 3}
   m_PrefabInstance: {fileID: 1467128625}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1531215555
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 222568114706296040, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: m_Name
-      value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232008543168269626, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: bgmClips.Array.data[0].volume
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232008543168269626, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: bgmClips.Array.data[1].volume
-      value: 0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845697023574947815, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.258796
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845697023574947815, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -16.976622
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845697023574947815, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 45.61994
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845697023574947815, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845697023574947815, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845697023574947815, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845697023574947815, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845697023574947815, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845697023574947815, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845697023574947815, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
 --- !u!1001 &1614654761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1793,17 +1728,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1446160774171075099, guid: 0bdd30d9468f842458cc35954bb59e18, type: 3}
   m_PrefabInstance: {fileID: 2018279467}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2070468499 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3232008543168269626, guid: 8feba73fe5be22b40a14b528b7736704, type: 3}
-  m_PrefabInstance: {fileID: 1531215555}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1228ce6bf080bdb4d94649e7550fa11f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2103006258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1939,7 +1863,7 @@ PrefabInstance:
     - target: {fileID: 1440331234801515805, guid: 77822d71e8aef984aa7d45c7ffa1d6fb, type: 3}
       propertyPath: audioManager
       value: 
-      objectReference: {fileID: 2070468499}
+      objectReference: {fileID: 0}
     - target: {fileID: 1988463249526741905, guid: 77822d71e8aef984aa7d45c7ffa1d6fb, type: 3}
       propertyPath: m_Name
       value: TitleAudio
@@ -1999,4 +1923,3 @@ SceneRoots:
   - {fileID: 418562778}
   - {fileID: 292012128}
   - {fileID: 8506541517116288379}
-  - {fileID: 1531215555}
