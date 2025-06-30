@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7795223353733615575}
   - component: {fileID: 437273222162032213}
   - component: {fileID: 6477020797563755845}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(-100.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 1410192123249661368}
   - component: {fileID: 1886316726738483700}
   - component: {fileID: 2061646213683331632}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(100.00, 0.00, 200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 7189498416705112583}
   - component: {fileID: 7733772157791487126}
   - component: {fileID: 916023467000188126}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(0.00, 0.00, 100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 7065076858381810606}
   - component: {fileID: 3554865708087838729}
   - component: {fileID: 7623300428329865861}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(100.00, 0.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 5052568440391164187}
   - component: {fileID: 4378590796349473940}
   - component: {fileID: 6755313733416113433}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(0.00, 0.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 201873309524455071}
   - component: {fileID: 8068352137715968894}
   - component: {fileID: 1792766021625907239}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(100.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 4248874490906987893}
   - component: {fileID: 8053210884907447621}
   - component: {fileID: 5910031323246237821}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(-100.00, 0.00, 200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 3393884099003163347}
   - component: {fileID: 337363338138209421}
   - component: {fileID: 5581802236578545736}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(0.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 6848690375376040397}
   - component: {fileID: 7082971798010743572}
   - component: {fileID: 3637120513109940429}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(0.00, 0.00, 200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -991,7 +991,7 @@ GameObject:
   - component: {fileID: 7225617090067681538}
   - component: {fileID: 7223046920359571811}
   - component: {fileID: 5546151821420583663}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(100.00, 0.00, 100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 7064707050638297197}
   - component: {fileID: 7730257310632453826}
   - component: {fileID: 806090842337166193}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(-100.00, 0.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1177,7 +1177,7 @@ GameObject:
   - component: {fileID: 6365988222866350270}
   - component: {fileID: 3780361706520096942}
   - component: {fileID: 4836398855666015983}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain_(-100.00, 0.00, 100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1367,8 +1367,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 50.00001, y: 0, z: 49.999996}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 50.00001, y: 2, z: 49.999996}
+  m_Center: {x: 0, y: -1.1, z: 0}
 --- !u!4 &1921684928566474224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
@@ -1626,8 +1626,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 50.000004, y: 0.0000029802322, z: 50}
-  m_Center: {x: 0.0000076293945, y: 0.00012207031, z: 0}
+  m_Size: {x: 50.000004, y: 0.000004980232, z: 50}
+  m_Center: {x: 0.0000076293945, y: -1.1, z: 0}
 --- !u!4 &4680398920924229895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4493525559171116548, guid: b044f588e2cfa6e40b031a12a07810d0, type: 3}

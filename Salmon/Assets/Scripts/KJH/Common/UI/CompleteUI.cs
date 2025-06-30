@@ -24,7 +24,7 @@ public class CompleteUI : UIBase
 
         UIManager.Instance.CloseAllOpenUI();
         GameManager.Instance.ResetPlayData();
-        GameManager.Instance.SavePlayData();
+        GameManager.Instance.LoadPlayData();
         SceneLoader.Instance.LoadScene(SceneType.Lobby);
     }
 }

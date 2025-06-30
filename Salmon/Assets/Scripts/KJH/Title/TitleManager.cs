@@ -33,7 +33,6 @@ public class TitleManager : MonoBehaviour
     // 첫 프레임 시작시 호출되는 메서드
     private void Start()
     {
-        PlayerPrefs.DeleteAll(); // 디버깅용, 실제 배포시 삭제 필요
         // 유저 데이터 매니저를 통한 데이터 로드
         UserDataManager.Instance.LoadUserData();
 
