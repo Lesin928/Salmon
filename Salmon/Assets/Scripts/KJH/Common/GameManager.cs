@@ -4,11 +4,11 @@ using UnityEngine;
 public class GameManager : SingletonComponent<GameManager>
 {
     public bool IsPaused { get; private set; }
-
-    public float PlayTime { get; set; }
     public Vector3 PlayerPosition { get; set; }
-    public float NewRecord { get; set; }
+    public Vector3 PlayerRotation { get; set; }
+    public float PlayTime { get; set; }
     public float TotalPlayTime { get; set; }
+    public float NewRecord { get; set; }
 
     #region Singleton
     protected override void AwakeInstance()
@@ -39,10 +39,11 @@ public class GameManager : SingletonComponent<GameManager>
         var userPlayData = UserDataManager.Instance.GetUserData<UserPlayData>();
         if (userPlayData != null)
         {
-            PlayTime = userPlayData.PlayTime;
             PlayerPosition = userPlayData.PlayerPosition;
-            NewRecord = userPlayData.NewRecord;
+            PlayerRotation = userPlayData.PlayerRotation;
+            PlayTime = userPlayData.PlayTime;
             TotalPlayTime = userPlayData.TotalPlayTime;
+            NewRecord = userPlayData.NewRecord;
         }
     }
 
@@ -52,10 +53,11 @@ public class GameManager : SingletonComponent<GameManager>
         if (userPlayData != null)
         {
             userPlayData.ExistsSavedPlayData = true;
-            userPlayData.PlayTime = PlayTime;
             userPlayData.PlayerPosition = PlayerPosition;
-            userPlayData.NewRecord = NewRecord;
+            userPlayData.PlayerRotation = PlayerRotation;
+            userPlayData.PlayTime = PlayTime;
             userPlayData.TotalPlayTime = TotalPlayTime;
+            userPlayData.NewRecord = NewRecord;
             userPlayData.SaveData();
         }
     }
