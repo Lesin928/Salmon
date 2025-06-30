@@ -85,7 +85,7 @@ public class InGameController : MonoBehaviour
 
             int minutes = Mathf.FloorToInt(GameManager.Instance.PlayTime / 60f);
             int seconds = Mathf.FloorToInt(GameManager.Instance.PlayTime % 60f);
-            if (minutes < 5 || (minutes == 5 && seconds == 0))
+            if (minutes < 15 || (minutes == 15 && seconds == 0))
             {
                 AchievementManager.Instance.SetAchievementProgress(AchievementKey.SPEEDRUNNER.ToString(), 1);
             }
