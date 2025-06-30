@@ -8,7 +8,7 @@ public class LobbyUIController : MonoBehaviour
 
     private void Start()
     {
-        if(GameManager.Instance.NewRecord != Mathf.Infinity)
+        if (GameManager.Instance.NewRecord != Mathf.Infinity)
         {
             int hours = Mathf.FloorToInt(GameManager.Instance.NewRecord / 3600f);
             int minutes = Mathf.FloorToInt(GameManager.Instance.NewRecord / 60f);
