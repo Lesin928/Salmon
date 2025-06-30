@@ -71,27 +71,30 @@ public class InGameController : MonoBehaviour
 
     public void CompleteGoal()
     {
-        isGameCompleted = true;
-
-        if(GameManager.Instance.PlayTime < GameManager.Instance.NewRecord)
+        if (!isGameCompleted)
         {
-            GameManager.Instance.NewRecord = GameManager.Instance.PlayTime;
+            isGameCompleted = true;
+
+            if (GameManager.Instance.PlayTime < GameManager.Instance.NewRecord)
+            {
+                GameManager.Instance.NewRecord = GameManager.Instance.PlayTime;
+            }
+
+            AchievementManager.Instance.SetAchievementProgress(AchievementKey.REACH_THE_TOP.ToString(), 1);
+            AchievementManager.Instance.AddAchievementProgress(AchievementKey.REACH_THE_TOP_FIVE_TIMES.ToString(), 1);
+
+            int minutes = Mathf.FloorToInt(GameManager.Instance.PlayTime / 60f);
+            int seconds = Mathf.FloorToInt(GameManager.Instance.PlayTime % 60f);
+            if (minutes < 5 || (minutes == 5 && seconds == 0))
+            {
+                AchievementManager.Instance.SetAchievementProgress(AchievementKey.SPEEDRUNNER.ToString(), 1);
+            }
+
+            GameManager.Instance.SavePlayData();
+
+            var uiData = new UIBaseData();
+            UIManager.Instance.OpenUI<CompleteUI>(uiData);
         }
-
-        AchievementManager.Instance.SetAchievementProgress(AchievementKey.REACH_THE_TOP.ToString(), 1);
-        AchievementManager.Instance.AddAchievementProgress(AchievementKey.REACH_THE_TOP_FIVE_TIMES.ToString(), 1);
-
-        int minutes = Mathf.FloorToInt(GameManager.Instance.PlayTime / 60f);
-        int seconds = Mathf.FloorToInt(GameManager.Instance.PlayTime % 60f);
-        if(minutes < 5 || (minutes == 5 && seconds == 0))
-        {
-            AchievementManager.Instance.SetAchievementProgress(AchievementKey.SPEEDRUNNER.ToString(), 1);
-        }
-
-        GameManager.Instance.SavePlayData();
-
-        var uiData = new UIBaseData();
-        UIManager.Instance.OpenUI<CompleteUI>(uiData);
     }
 
     private void OnApplicationFocus(bool focus)
