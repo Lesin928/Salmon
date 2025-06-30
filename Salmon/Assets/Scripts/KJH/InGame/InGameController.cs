@@ -28,6 +28,12 @@ public class InGameController : MonoBehaviour
         GameManager.Instance.PlayTime += Time.deltaTime;
         GameManager.Instance.TotalPlayTime += Time.deltaTime;
         UpdateTimer();
+
+        int hours = Mathf.FloorToInt(GameManager.Instance.TotalPlayTime / 3600f);
+        if(hours > 10)
+        {
+            AchievementManager.Instance.SetAchievementProgress(AchievementKey.PLAY_FOR_TEN_HOURS.ToString(), 1);
+        }
     }
 
     private void UpdateTimer()
